@@ -4,7 +4,7 @@ var MotherShip = require('/MotherShip');
 var PIShip = require('/PIShip');
 var StoryShip = require('/StoryShip');
 
-function BurndownChart(script) {
+function BlastdownChart(script) {
 	add(Player);
 
 	this.script = script;
@@ -12,7 +12,7 @@ function BurndownChart(script) {
 	this.elapsed = 0;
 }
 
-BurndownChart.inherit(Layer, {
+BlastdownChart.inherit(Layer, {
 	update: function(dt) {
 		this.elapsed += Math.round(dt * 1000);
 
@@ -77,7 +77,7 @@ function main() {
 	events.addListener(dataImporter, 'scriptReady', function(dataImporter) {
 		events.addListener(director, 'ready', function(director) {
 			var scene = new Scene();
-			var layer = new BurndownChart(dataImporter.script);
+			var layer = new BlastdownChart(dataImporter.script);
 			scene.addChild(layer);
 			director.replaceScene(scene);
 		});

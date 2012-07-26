@@ -1,12 +1,12 @@
 var cocos = require('cocos2d');
 var geom = require('geometry');
 
-function Player() {
-	Player.superclass.constructor.call(this);
+function StoryShip() {
+	StoryShip.superclass.constructor.call(this);
 
 	var sprite = new cocos.nodes.Sprite({
 		file: '/resources/sprites.png',
-		rect: new geom.Rect(0, 32, 32, 16)
+		rect: new geom.Rect(0, 0, 64, 16)
 	});
 
 	sprite.anchorPoint = new geom.Point(0, 0);
@@ -15,9 +15,10 @@ function Player() {
 
 }
 
-Player.inherit(cocos.nodes.Node);
+StoryShip.inherit(cocos.nodes.Node);
 
 
-module.exports = Player;
+module.exports = StoryShip;
+
 
 

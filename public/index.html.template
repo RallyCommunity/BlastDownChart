@@ -27,9 +27,9 @@
         </style>
     </head>
     <body>
-        <h1>Bdc</h1>
+        <h1>Blastdown Chart!!</h1>
         <div class="cocos2d-app">
-            Loading Bdc...
+            Loading Blastdown Chart!!...
             ${scripts}
         </div>
     </body>
