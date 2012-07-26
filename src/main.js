@@ -11,6 +11,8 @@ var BlastDownChartLayer = require('/BlastDownChartLayer');
 
 function main() {
 	var director = Director.sharedDirector;
+	director.maxFrameRate = 60;
+	director.displayFPS = true;
 
 	events.addListener(director, 'ready', function(director) {
 		var dataImporter = new DataImporter();
