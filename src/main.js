@@ -1,71 +1,49 @@
-"use strict"  // Use strict JavaScript mode
+"use strict" // Use strict JavaScript mode
+var cocos = require('cocos2d');
+var nodes = cocos.nodes;
+var events = require('events');
+var geom = require('geometry');
+var ccp = geom.ccp;
 
-// Pull in the modules we're going to use
-var cocos  = require('cocos2d')   // Import the cocos2d module
-  , nodes  = cocos.nodes          // Convenient access to 'nodes'
-  , events = require('events')    // Import the events module
-  , geo    = require('geometry')  // Import the geometry module
-  , ccp    = geo.ccp;              // Short hand to create points
+var Layer = nodes.Layer;
+var Scene = nodes.Scene;
+var Label = nodes.Label;
+var Director = cocos.Director;
 
-// Convenient access to some constructors
-var Layer    = nodes.Layer
-  , Scene    = nodes.Scene
-  , Label    = nodes.Label
-  , Director = cocos.Director;
+var Player = require('/Player');
 
-/**
- * @class Initial application layer
- * @extends cocos.nodes.Layer
- */
-function Bdc () {
-    // You must always call the super class constructor
-    Bdc.superclass.constructor.call(this);
+function Bdc() {
+	Bdc.superclass.constructor.call(this);
 
-    // Get size of canvas
-    var s = Director.sharedDirector.winSize;
+	var s = Director.sharedDirector.winSize;
 
-    // Create label
-    var label = new Label({ string:   'Blastdown Chart'
-                          , fontName: 'Arial'
-                          , fontSize: 76
-                          });
+	var player = new Player();
+	player.position = new geom.Point(50, 100);
+	this.addChild(player);
+	this.player = player;
 
-    // Position the label in the centre of the view
-    label.position = ccp(s.width / 2, s.height / 2);
-
-    // Add label to layer
-    this.addChild(label);
+	//var action = new cocos.actions.MoveTo({
+		//duration: 7,
+		//position: new geom.Point(s.width - 40, s.height - 40)
+	//});
+	//this.player.runAction(action);
 }
 
-// Inherit from cocos.nodes.Layer
 Bdc.inherit(Layer);
 
-/**
- * Entry point for the application
- */
-function main () {
-    // Initialise application
+function main() {
+	var director = Director.sharedDirector;
 
-    // Get director singleton
-    var director = Director.sharedDirector;
+	events.addListener(director, 'ready', function(director) {
+		var scene = new Scene(),
+		layer = new Bdc();
 
-    // Wait for the director to finish preloading our assets
-    events.addListener(director, 'ready', function (director) {
-        // Create a scene and layer
-        var scene = new Scene()
-          , layer = new Bdc();
+		scene.addChild(layer);
+		director.replaceScene(scene);
+	})
 
-        // Add our layer to the scene
-        scene.addChild(layer);
-
-        // Run the scene
-        director.replaceScene(scene);
-    })
-
-    // Preload our assets
-    director.runPreloadScene();
+	director.runPreloadScene();
 }
-
 
 exports.main = main;
 
