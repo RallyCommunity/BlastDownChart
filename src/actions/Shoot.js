@@ -7,7 +7,7 @@ var Bullet = require('/Bullet');
 function Shoot(id) {
 	Shoot.superclass.constructor.call(this);
 	this.targetId = id;
-};
+}
 
 Shoot.inherit(cocos.actions.ActionInstant, {
 	startWithTarget: function(node) {

@@ -16,7 +16,7 @@ function Bullet(targetId) {
 	this.addChild({
 		child: sprite
 	})
-	this.contentSize = sprite.contentSize
+	this.contentSize = sprite.contentSize;
 
 	this.velocity = new geom.Point(0, 500);
 	this.scheduleUpdate();
