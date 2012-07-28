@@ -4,7 +4,7 @@ var Sequence = cocos.actions.Sequence;
 var MoveTo = cocos.actions.MoveTo;
 var DelayTime = cocos.actions.DelayTime;
 
-var Shoot = require('/actions/Shoot');
+var Shoot = require('../actions/Shoot');
 
 function Player() {
 	Player.superclass.constructor.call(this);

@@ -8,7 +8,7 @@ var geom = require('geometry');
 var Point = geom.Point;
 var Rect = geom.Rect;
 
-var BaseShip = require('/nodes/BaseShip');
+var BaseShip = require('./BaseShip');
 
 function MotherShip() {
 	MotherShip.superclass.constructor.call(this);

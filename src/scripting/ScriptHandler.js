@@ -1,9 +1,9 @@
 var geom = require('geometry');
 var Point = geom.Point;
 
-var MotherShip = require('/nodes/MotherShip');
-var PIShip = require('/nodes/PIShip');
-var StoryShip = require('/nodes/StoryShip');
+var MotherShip = require('../nodes/MotherShip');
+var PIShip = require('../nodes/PIShip');
+var StoryShip = require('../nodes/StoryShip');
 
 var shipMap = {
 	Mother: MotherShip,
