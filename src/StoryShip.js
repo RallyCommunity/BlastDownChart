@@ -12,7 +12,6 @@ function StoryShip() {
 	sprite.anchorPoint = new geom.Point(0, 0);
 	this.addChild({ child: sprite });
 	this.contentSize = sprite.contentSize;
-
 }
 
 StoryShip.inherit(cocos.nodes.Node, {
