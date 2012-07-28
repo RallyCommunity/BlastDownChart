@@ -9,7 +9,7 @@ function getData() {
 		}
 	},
 	{
-		at: 1.2,
+		at: 3.2,
 		event: 'spawn',
 		args: {
 			type: 'PI',
@@ -19,7 +19,7 @@ function getData() {
 		}
 	},
 	{
-		at: 1.5,
+		at: 5.5,
 		event: 'spawn',
 		args: {
 			type: 'Story',
@@ -29,7 +29,7 @@ function getData() {
 		}
 	},
 	{
-		at: 1.8,
+		at: 9.8,
 		event: 'spawn',
 		args: {
 			type: 'Story',
@@ -39,22 +39,22 @@ function getData() {
 		}
 	},
 	{
-		at: 5,
+		at: 14,
 		event: 'shoot',
 		args: 'S2'
 	},
 	{
-		at: 6.5,
+		at: 17,
 		event: 'shoot',
 		args: 'S1'
 	},
 	{
-		at: 7.8,
+		at: 21,
 		event: 'shoot',
 		args: 'PI2'
 	},
 	{
-		at: 10,
+		at: 22,
 		event: 'shoot',
 		args: 'PI1'
 	}];

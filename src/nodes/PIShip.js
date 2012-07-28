@@ -1,32 +1,41 @@
 var cocos = require('cocos2d');
+var Sprite = cocos.nodes.Sprite;
+var MoveBy = cocos.actions.MoveBy;
+var Sequence = cocos.actions.Sequence;
+var RepeatForever = cocos.actions.RepeatForever;
+
 var geom = require('geometry');
+var Point = geom.Point;
+var Rect = geom.Rect;
+
+var BaseShip = require('/nodes/BaseShip');
 
 function PIShip() {
 	PIShip.superclass.constructor.call(this);
 
-	var sprite = new cocos.nodes.Sprite({
+	var sprite = new Sprite({
 		file: '/resources/sprites.png',
-		rect: new geom.Rect(0, 48, 64, 16)
+		rect: new Rect(0, 48, 64, 16)
 	});
 
-	sprite.anchorPoint = new geom.Point(0, 0);
+	sprite.anchorPoint = new Point(0, 0);
 	this.addChild({ child: sprite });
 	this.contentSize = sprite.contentSize;
 }
 
-PIShip.inherit(cocos.nodes.Node, {
+PIShip.inherit(BaseShip, {
 	bob: function() {
-		var moveRight = new cocos.actions.MoveBy({
+		var moveRight = new MoveBy({
 			duration: .75,
-			position: new geom.Point(8, 0),
+			position: new Point(8, 0),
 		});
 		var moveLeft = moveRight.reverse();
 
-		var moveSequence = new cocos.actions.Sequence({
+		var moveSequence = new Sequence({
 			actions: [moveRight, moveLeft]
 		});
 
-		this.runAction(new cocos.actions.RepeatForever(moveSequence));
+		this.runAction(new RepeatForever(moveSequence));
 	}
 });
 

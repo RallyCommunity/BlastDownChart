@@ -1,4 +1,5 @@
 var geom = require('geometry');
+var Point = geom.Point;
 
 var MotherShip = require('/nodes/MotherShip');
 var PIShip = require('/nodes/PIShip');
@@ -24,26 +25,44 @@ function ScriptHandler(layer, player, winSize) {
 
 ScriptHandler.inherit(Object, {
 
-	_positionShip: function(ship) {
-		// TODO: this is just temporary to get something in there
+	_getDestinationForShip: function(type, parentId) {
+		// TODO: temporary and very dumb algorithm here, this is really the meat of BDC,
+		// figuring out how to place ships based on their type, their parent and the
+		// current state of the world. This will expand a lot.
 
-		this._shipXs = this._shipXs || [60, 150, 240, 330];
+		this._yc = this._yc || 1;
 
-		this._shipY = this._shipY || this._winSize.height - 20;
-		var xi = Math.floor(Math.random() * this._shipXs.length);
+		if(type === 'Mother') {
+			return new Point(this._winSize.width / 2, this._winSize.height - 20);
+		} else {
+			var parent = this._layer.findShipById(parentId);
 
-		ship.position = new geom.Point(this._shipXs[xi], this._shipY);
-		ship.centerX = ship.position.x + ship.contentSize.width;
-		this._shipY -= ship.contentSize.height + 20;
+			if(parent._type === 'Mother') {
+				return new Point(200, this._winSize.height - 150);
+			} else {
+				return new Point(200, this._winSize.height - 150 - (this._yc++ * 50)); 
+			}
+		}
 	},
-
 
 	spawn: function(config) {
 		var Constructor = shipMap[config.type];
 		var ship = new Constructor();
 		ship._id = config.id;
-		this._positionShip(ship);
-		ship.bob();
+		ship._type = config.type;
+
+		var destination = this._getDestinationForShip(config.type, config.from);
+		
+		if(config.from) {
+			var parent = this._layer.findShipById(config.from);
+			ship.spawnFrom(parent.position, destination, function(ship) {
+				ship.bob();
+			});
+		} else {
+			ship.position = destination;
+			ship.bob();
+		}
+
 		this._layer.addChild(ship);
 	},
 
