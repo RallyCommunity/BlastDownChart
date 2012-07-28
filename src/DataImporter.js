@@ -1,75 +1,62 @@
-var StoryShip = require('/nodes/StoryShip');
-
 function getData() {
 	return [{
 		at: 0.5,
 		event: 'spawn',
 		args: {
-			type: StoryShip,
-			id: 'S1',
-			title: 'first safari story'
+			type: 'Mother',
+			id: 'PI1',
+			title: 'Mother Strategy'
 		}
 	},
 	{
 		at: 1.2,
 		event: 'spawn',
 		args: {
-			type: StoryShip,
-			id: 'S2',
-			title: 'another story'
+			type: 'PI',
+			id: 'PI2',
+			from: 'PI1',
+			title: 'first child PI'
 		}
 	},
 	{
 		at: 1.5,
 		event: 'spawn',
 		args: {
-			type: StoryShip,
-			id: 'S3',
-			title: 'another story'
+			type: 'Story',
+			id: 'S1',
+			from: 'PI2',
+			title: 'first story'
 		}
 	},
 	{
 		at: 1.8,
 		event: 'spawn',
 		args: {
-			type: StoryShip,
-			id: 'S4',
-			title: 'another story'
-		}
-	},
-	{
-		at: 3.4,
-		event: 'spawn',
-		args: {
-			type: StoryShip,
-			id: 'S5',
+			type: 'Story',
+			id: 'S2',
+			from: 'PI2',
 			title: 'another story'
 		}
 	},
 	{
 		at: 5,
 		event: 'shoot',
-		args: 'S5'
+		args: 'S2'
 	},
 	{
 		at: 6.5,
 		event: 'shoot',
-		args: 'S3'
+		args: 'S1'
 	},
 	{
 		at: 7.8,
 		event: 'shoot',
-		args: 'S1'
+		args: 'PI2'
 	},
 	{
 		at: 10,
 		event: 'shoot',
-		args: 'S2'
-	},
-	{
-		at: 12,
-		event: 'shoot',
-		args: 'S4'
+		args: 'PI1'
 	}];
 }
 

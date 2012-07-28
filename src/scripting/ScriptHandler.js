@@ -1,5 +1,15 @@
 var geom = require('geometry');
 
+var MotherShip = require('/nodes/MotherShip');
+var PIShip = require('/nodes/PIShip');
+var StoryShip = require('/nodes/StoryShip');
+
+var shipMap = {
+	Mother: MotherShip,
+	PI : PIShip,
+	Story: StoryShip
+};
+
 /*
  * ScriptHandler
  * -----
@@ -29,7 +39,8 @@ ScriptHandler.inherit(Object, {
 
 
 	spawn: function(config) {
-		var ship = new config.type();
+		var Constructor = shipMap[config.type];
+		var ship = new Constructor();
 		ship._id = config.id;
 		this._positionShip(ship);
 		ship.bob();
