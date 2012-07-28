@@ -15,8 +15,23 @@ function StoryShip() {
 
 }
 
-StoryShip.inherit(cocos.nodes.Node);
+StoryShip.inherit(cocos.nodes.Node, {
+	bob: function() {
+		var jumpRight = new cocos.actions.JumpBy({
+			duration: 0.5,
+			delta: new geom.Point(14, 0),
+			height: - 8,
+			jumps: 1
+		});
+		var jumpLeft = jumpRight.reverse();
 
+		var jumpSequence = new cocos.actions.Sequence({
+			actions: [jumpRight, jumpLeft]
+		});
+
+		this.runAction(new cocos.actions.RepeatForever(jumpSequence));
+	}
+});
 
 module.exports = StoryShip;
 

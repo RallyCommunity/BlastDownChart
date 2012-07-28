@@ -2,10 +2,10 @@ var cocos = require('cocos2d');
 var geom = require('geometry');
 var util = require('util');
 
-function Bullet(targetId) {
+function Bullet(target) {
 	Bullet.superclass.constructor.call(this);
 
-	this.targetId = targetId;
+	this._target = target;
 
 	var sprite = new cocos.nodes.Sprite({
 		file: '/resources/sprites.png',
@@ -25,15 +25,11 @@ function Bullet(targetId) {
 
 Bullet.inherit(cocos.nodes.Node, {
 	_checkForTargetCollision: function() {
-		this.target = this.target || this.parent.findShipById(this.targetId);
+		var targetBox = this._target.boundingBox;
 
-		if(this.target) {
-			var targetBox = this.target.boundingBox;
-
-			if(geom.rectOverlapsRect(this.boundingBox, targetBox)) {
-				this.parent.removeChild(this.target);
-				this.parent.removeChild(this);
-			}
+		if (geom.rectOverlapsRect(this.boundingBox, targetBox)) {
+			this.parent.removeChild(this._target);
+			this.parent.removeChild(this);
 		}
 	},
 
@@ -44,7 +40,7 @@ Bullet.inherit(cocos.nodes.Node, {
 
 		pos.y += dt * this.velocity.y;
 
-		if(pos.y > winSize.height) {
+		if (pos.y > winSize.height) {
 			this.parent.removeChild(this);
 		}
 

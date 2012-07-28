@@ -2,7 +2,7 @@ var StoryShip = require('/StoryShip');
 
 function getData() {
 	return [{
-		at: 500,
+		at: 0.5,
 		event: 'spawn',
 		args: {
 			type: StoryShip,
@@ -11,7 +11,7 @@ function getData() {
 		}
 	},
 	{
-		at: 1200,
+		at: 1.2,
 		event: 'spawn',
 		args: {
 			type: StoryShip,
@@ -20,7 +20,7 @@ function getData() {
 		}
 	},
 	{
-		at: 1500,
+		at: 1.5,
 		event: 'spawn',
 		args: {
 			type: StoryShip,
@@ -29,7 +29,7 @@ function getData() {
 		}
 	},
 	{
-		at: 1800,
+		at: 1.8,
 		event: 'spawn',
 		args: {
 			type: StoryShip,
@@ -38,7 +38,7 @@ function getData() {
 		}
 	},
 	{
-		at: 3400,
+		at: 3.4,
 		event: 'spawn',
 		args: {
 			type: StoryShip,
@@ -47,27 +47,27 @@ function getData() {
 		}
 	},
 	{
-		at: 5000,
+		at: 5,
 		event: 'shoot',
 		args: 'S5'
 	},
 	{
-		at: 6500,
+		at: 6.5,
 		event: 'shoot',
 		args: 'S3'
 	},
 	{
-		at: 7800,
+		at: 7.8,
 		event: 'shoot',
 		args: 'S1'
 	},
 	{
-		at: 10000,
+		at: 10,
 		event: 'shoot',
 		args: 'S2'
 	},
 	{
-		at: 12000,
+		at: 12,
 		event: 'shoot',
 		args: 'S4'
 	}];

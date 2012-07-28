@@ -4,17 +4,17 @@ var util = require('util');
 var Bullet = require('/Bullet');
 
 
-function Shoot(id) {
+function Shoot(target) {
 	Shoot.superclass.constructor.call(this);
-	this.targetId = id;
+	this.target = target;
 }
 
 Shoot.inherit(cocos.actions.ActionInstant, {
 	startWithTarget: function(node) {
-		this.node = node;
-		var bullet = new Bullet(this.targetId);
-		bullet.position = util.copy(this.node.position);
-		this.node.parent.addChild(bullet);
+		var bullet = new Bullet(this.target);
+		bullet.position = util.copy(node.position);
+
+		node.parent.addChild(bullet);
 	}
 });
 

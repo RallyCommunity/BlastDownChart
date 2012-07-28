@@ -1,5 +1,10 @@
 var cocos = require('cocos2d');
 var geom = require('geometry');
+var Sequence = cocos.actions.Sequence;
+var MoveTo = cocos.actions.MoveTo;
+var DelayTime = cocos.actions.DelayTime;
+
+var Shoot = require('/actions/Shoot');
 
 function Player() {
 	Player.superclass.constructor.call(this);
@@ -15,8 +20,20 @@ function Player() {
 
 }
 
-Player.inherit(cocos.nodes.Node);
-
+Player.inherit(cocos.nodes.Node, {
+	shootAt: function(ship) {
+		this.runAction(new Sequence({
+			actions: [
+				new MoveTo({
+					duration: 1,
+					position: new geom.Point(ship.position.x, this.position.y)
+				}),
+				new DelayTime(0.2),
+				new Shoot(ship)
+			]
+		}));
+	}
+});
 
 module.exports = Player;
 
