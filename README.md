@@ -19,7 +19,7 @@ You will need the JS version of Cocos2D (homepage [here](http://cocos2d-javascri
 Sadly, cocos2d-js is not very unit test friendly. But a minor hack seems to get it working, we'll see how this works out...
 
 1. install jasmine-node: `npm install -g jasmine-node`
-2. `export NODE\_PATH=/usr/local/lib/node_modules/cocos2d/lib:/usr/local/lib/node_modules/cocos2d/src/libs`
+2. `export NODE_PATH=/usr/local/lib/node_modules/cocos2d/lib:/usr/local/lib/node_modules/cocos2d/src/libs`
 	* it's possible this needs to be tweaked on your machine, but should be fine in OSX
 3. head to [BlastDownChartRoot]/specs
 4. run `jasmine-node .`
