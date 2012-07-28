@@ -8,7 +8,7 @@ var geom = require('geometry');
 var Point = geom.Point;
 var Rect = geom.Rect;
 
-var BaseShip = require('/nodes/BaseShip');
+var BaseShip = require('./BaseShip');
 
 function StoryShip() {
 	StoryShip.superclass.constructor.call(this);
@@ -19,7 +19,7 @@ function StoryShip() {
 	});
 
 	sprite.anchorPoint = new Point(0, 0);
-	this.addChild({ child: sprite });
+	this.addChild(sprite);
 	this.contentSize = sprite.contentSize;
 }
 

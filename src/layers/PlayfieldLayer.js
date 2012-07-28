@@ -1,10 +1,10 @@
 var cocos = require('cocos2d');
 var geom = require('geometry');
 
-var ScriptRunner = require('/scripting/ScriptRunner');
-var ScriptHandler = require('/scripting/ScriptHandler');
-var Player = require('/nodes/Player');
-var Shoot = require('/actions/Shoot');
+var ScriptRunner = require('../scripting/ScriptRunner');
+var ScriptHandler = require('../scripting/ScriptHandler');
+var Player = require('../nodes/Player');
+var Shoot = require('../actions/Shoot');
 
 function PlayfieldLayer(script) {
 	PlayfieldLayer.superclass.constructor.call(this);

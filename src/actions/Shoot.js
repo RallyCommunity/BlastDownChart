@@ -1,7 +1,7 @@
 var cocos = require('cocos2d');
 var util = require('util');
 
-var Bullet = require('/nodes/Bullet');
+var Bullet = require('../nodes/Bullet');
 
 
 function Shoot(target) {
