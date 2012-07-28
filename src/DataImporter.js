@@ -1,4 +1,4 @@
-var StoryShip = require('/StoryShip');
+var StoryShip = require('/nodes/StoryShip');
 
 function getData() {
 	return [{

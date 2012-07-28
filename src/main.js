@@ -7,7 +7,7 @@ var Scene = cocos.nodes.Scene;
 var Director = cocos.Director;
 
 var DataImporter = require('/DataImporter');
-var PlayfieldLayer = require('/PlayfieldLayer');
+var PlayfieldLayer = require('/layers/PlayfieldLayer');
 
 function main() {
 	var director = Director.sharedDirector;
