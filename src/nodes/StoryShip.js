@@ -19,7 +19,7 @@ function StoryShip() {
 	});
 
 	sprite.anchorPoint = new Point(0, 0);
-	this.addChild({ child: sprite });
+	this.addChild(sprite);
 	this.contentSize = sprite.contentSize;
 }
 

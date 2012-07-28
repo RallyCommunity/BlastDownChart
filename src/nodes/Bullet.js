@@ -13,9 +13,7 @@ function Bullet(target) {
 	});
 
 	sprite.anchorPoint = new geom.Point(0, 0)
-	this.addChild({
-		child: sprite
-	});
+	this.addChild(sprite);
 
 	this.contentSize = sprite.contentSize;
 
@@ -28,7 +26,7 @@ Bullet.inherit(cocos.nodes.Node, {
 		var targetBox = this._target.boundingBox;
 
 		if (geom.rectOverlapsRect(this.boundingBox, targetBox)) {
-			this.parent.removeChild(this._target);
+			this._target.explode();
 			this.parent.removeChild(this);
 		}
 	},

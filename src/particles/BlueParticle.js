@@ -6,8 +6,8 @@ var geom = require('geometry');
 var Rect = geom.Rect;
 var Point = geom.Point;
 
-function BasicParticle() {
-	BasicParticle.superclass.constructor.call(this);
+function BlueParticle() {
+	BlueParticle.superclass.constructor.call(this);
 
 	var sprite = new Sprite({
 		file: '/resources/sprites.png',
@@ -15,13 +15,13 @@ function BasicParticle() {
 	});
 
 	sprite.anchorPoint = new Point(0, 0);
-	this.addChild({ child: sprite });
+	this.addChild(sprite);
 	this.contentSize = sprite.contentSize;
 }
 
-BasicParticle.inherit(Node);
+BlueParticle.inherit(Node);
 
-module.exports = BasicParticle;
+module.exports = BlueParticle;
 
 
 

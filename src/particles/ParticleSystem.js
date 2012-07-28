@@ -1,6 +1,9 @@
 var cocos = require('cocos2d');
 var Node = cocos.nodes.Node;
 
+var geom = require('geometry');
+var Point = geom.Point;
+
 var _ = require('../util/underscore-min');
 var Vector = require('../geometry/Vector');
 var Random = require('../util/Random');
@@ -37,7 +40,9 @@ ParticleSystem.inherit(Node, {
 	_createParticle: function() {
 		var rand = Random.rand(0, this.particleTypes.length);
 
-		return new this.particleTypes[rand];
+		var particle = new this.particleTypes[rand];
+		particle.position = new Point(this.position.x, this.position.y);
+		return particle;
 	},
 
 	_isFull: function() {
@@ -152,8 +157,9 @@ ParticleSystem.inherit(Node, {
 				p.rx += p.tmp.x;
 				p.ry += p.tmp.y;
 
-				p.position.x = p.rx;
-				p.position.y = p.ry;
+				//p.position.x = p.rx;
+				//p.position.y = p.ry;
+				p.position = new Point(p.rx, p.ry);
 
 				//p.size += p.deltaSize * delta;
 				//p.size = Math.max(0, p.size);
@@ -186,6 +192,11 @@ ParticleSystem.inherit(Node, {
 
 			this._elapsed += delta;
 			this.active = this._elapsed < this.duration;
+
+			if(!this.active && this.removeWhenDone) {
+				this.parent.removeChild(this);
+				return;
+			}
 
 			this._particleIndex = 0;
 
