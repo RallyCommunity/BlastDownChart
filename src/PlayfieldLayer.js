@@ -4,8 +4,8 @@ var geom = require('geometry');
 var Player = require('/Player');
 var Shoot = require('/actions/Shoot');
 
-function BlastDownChartLayer(script) {
-	BlastDownChartLayer.superclass.constructor.call(this);
+function PlayfieldLayer(script) {
+	PlayfieldLayer.superclass.constructor.call(this);
 
 	var winSize = cocos.Director.sharedDirector.winSize;
 
@@ -20,7 +20,7 @@ function BlastDownChartLayer(script) {
 	this.scheduleUpdate();
 }
 
-BlastDownChartLayer.inherit(cocos.nodes.Layer, {
+PlayfieldLayer.inherit(cocos.nodes.Layer, {
 	findShipById: function(id) {
 		// TODO: this really should be using tags
 		return this.children.filter(function(child) {
@@ -113,5 +113,5 @@ BlastDownChartLayer.inherit(cocos.nodes.Layer, {
 	}
 });
 
-module.exports = BlastDownChartLayer;
+module.exports = PlayfieldLayer;
 

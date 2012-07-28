@@ -7,7 +7,7 @@ var Scene = cocos.nodes.Scene;
 var Director = cocos.Director;
 
 var DataImporter = require('/DataImporter');
-var BlastDownChartLayer = require('/BlastDownChartLayer');
+var PlayfieldLayer = require('/PlayfieldLayer');
 
 function main() {
 	var director = Director.sharedDirector;
@@ -18,7 +18,7 @@ function main() {
 		var dataImporter = new DataImporter();
 		dataImporter.onDataReady(function(script) {
 			var scene = new Scene();
-			var layer = new BlastDownChartLayer(script);
+			var layer = new PlayfieldLayer(script);
 
 			scene.addChild(layer);
 			director.replaceScene(scene);

@@ -10,12 +10,13 @@ function Bullet(targetId) {
 	var sprite = new cocos.nodes.Sprite({
 		file: '/resources/sprites.png',
 		rect: new geom.Rect(64, 0, 16, 16)
-	})
+	});
 
 	sprite.anchorPoint = new geom.Point(0, 0)
 	this.addChild({
 		child: sprite
-	})
+	});
+
 	this.contentSize = sprite.contentSize;
 
 	this.velocity = new geom.Point(0, 500);
