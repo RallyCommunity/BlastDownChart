@@ -25,6 +25,11 @@ function ScriptHandler(layer, player, winSize) {
 
 ScriptHandler.inherit(Object, {
 
+	_getStartForShip: function(parentId) {
+		return (parentId && this._layer.findShipById(parentId).position) || 
+			new Point(this._winSize.width / 2, this._winSize.height + 100);
+	},
+
 	_getDestinationForShip: function(type, parentId) {
 		// TODO: temporary and very dumb algorithm here, this is really the meat of BDC,
 		// figuring out how to place ships based on their type, their parent and the
@@ -45,23 +50,27 @@ ScriptHandler.inherit(Object, {
 		}
 	},
 
+	_getZOrder: function(parentId) {
+		if(!parentId) {
+			return 1000;
+		} else {
+			return this._layer.findShipById(parentId).zOrder - 1;
+		}
+	},
+
 	spawn: function(config) {
 		var Constructor = shipMap[config.type];
 		var ship = new Constructor();
 		ship._id = config.id;
 		ship._type = config.type;
+		ship.zOrder = this._getZOrder(config.from);
 
+		var start = this._getStartForShip(config.from);
 		var destination = this._getDestinationForShip(config.type, config.from);
 		
-		if(config.from) {
-			var parent = this._layer.findShipById(config.from);
-			ship.spawnFrom(parent.position, destination, function(ship) {
-				ship.bob();
-			});
-		} else {
-			ship.position = destination;
+		ship.spawnFrom(start, destination, function(ship) {
 			ship.bob();
-		}
+		});
 
 		this._layer.addChild(ship);
 	},
