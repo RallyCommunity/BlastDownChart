@@ -5,6 +5,8 @@ var MotherShip = require('../nodes/MotherShip');
 var PIShip = require('../nodes/PIShip');
 var StoryShip = require('../nodes/StoryShip');
 
+var Random = require('../util/Random');
+
 var shipMap = {
 	Mother: MotherShip,
 	PI : PIShip,
@@ -35,17 +37,18 @@ ScriptHandler.inherit(Object, {
 		// figuring out how to place ships based on their type, their parent and the
 		// current state of the world. This will expand a lot.
 
-		this._yc = this._yc || 1;
+		var parent = this._layer.findShipById(parentId);
 
-		if(type === 'Mother') {
+		if(!parent) { // mother ship
 			return new Point(this._winSize.width / 2, this._winSize.height - 20);
 		} else {
-			var parent = this._layer.findShipById(parentId);
-
 			if(parent._type === 'Mother') {
-				return new Point(200, this._winSize.height - 150);
+				this._piXs = this._piXs || [100, 220, 380];
+
+				return new Point(this._piXs.pop(), this._winSize.height - 150 + Random.rand(-20, 30));
 			} else {
-				return new Point(200, this._winSize.height - 150 - (this._yc++ * 50)); 
+				parent._yc = parent._yc || 1;
+				return new Point(parent.position.x, parent.position.y - 50 - (parent._yc++ * 50)); 
 			}
 		}
 	},

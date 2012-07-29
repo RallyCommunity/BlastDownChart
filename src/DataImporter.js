@@ -62,6 +62,15 @@ function getData() {
 		}
 	},
 	{
+		at: totalTime * 0.25,
+		event: 'spawn',
+		args: {
+			type: 'PI',
+			id: 'PI3',
+			from: 'PI1'
+		}
+	},
+	{
 		at: totalTime * 0.3,
 		event: 'spawn',
 		args: {
@@ -71,33 +80,70 @@ function getData() {
 			title: 'another story'
 		}
 	},
-	//{
-		//at: totalTime * 0.4,
-		//event: 'strengthen',
-		//args: 'S1'
-	//},
+	{
+		at: totalTime * 0.45,
+		event: 'spawn',
+		args: {
+			type: 'Story',
+			id: 'S3',
+			from: 'PI3'
+		}
+	},
 	{
 		at: totalTime * 0.6,
 		event: 'shoot',
 		args: 'S2'
 	},
-	//{
-		//at: totalTime * 0.7,
-		//event: 'weaken',
-		//args: 'S1'
-	//},
 	{
-		at: totalTime * 0.8,
+		at: totalTime * 0.7,
+		event: 'spawn',
+		args: {
+			type: 'Story',
+			id: 'S4',
+			from: 'PI3'
+		}
+	},
+	{
+		at: totalTime * 0.92,
+		event: 'shoot',
+		args: 'S4'
+	},
+	{
+		at: totalTime * 0.95,
+		event: 'spawn',
+		args: {
+			type: 'Story',
+			id: 'S5',
+			from: 'PI3'
+		}
+	},
+	{
+		at: totalTime * 1.1,
+		event: 'shoot',
+		args: 'S5'
+	},
+	{
+		at: totalTime * 1.2,
+		event: 'shoot',
+		args: 'S3'
+	},
+	{
+		at: totalTime * 1.24,
+		event: 'shoot',
+		args: 'PI3'
+	},
+	{
+		at: totalTime * 1.35,
 		event: 'shoot',
 		args: 'S1'
 	},
 	{
-		at: totalTime * 0.9,
+		at: totalTime * 1.40,
 		event: 'shoot',
 		args: 'PI2'
 	},
 	{
-		at: totalTime * 1,
+		at: totalTime * 1.47,
 		event: 'shoot',
 		args: 'PI1'
 	}];
