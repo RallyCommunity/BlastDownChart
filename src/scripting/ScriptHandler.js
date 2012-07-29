@@ -111,6 +111,7 @@ ScriptHandler.inherit(Object, {
 		label.anchorPoint = new Point(0.5, 0.5);
 
 		label.position = new Point(this._layer.contentSize.width / 2, this._layer.contentSize.height /2);
+		label.opacity = 0;
 		this._layer.addChild(label);
 		label.runAction(new FadeIn({ duration: 2 }));
 	}
