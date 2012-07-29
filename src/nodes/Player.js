@@ -13,9 +13,6 @@ var Shoot = require('../actions/Shoot');
 
 var Vector = require('../geometry/Vector');
 var ParticleSystem = require('../particles/ParticleSystem');
-var Exhaust1Particle = require('../particles/Exhaust1Particle');
-var Exhaust2Particle = require('../particles/Exhaust2Particle');
-var Exhaust3Particle = require('../particles/Exhaust3Particle');
 
 function Player() {
 	Player.superclass.constructor.call(this);
@@ -53,9 +50,11 @@ Player.inherit(Node, {
 			lifeVar: 0.1,
 			emissionRate: 50 / 1,
 			active: true,
-			particleTypes: [Exhaust1Particle, Exhaust2Particle, Exhaust3Particle],
-			startOpacity: 225,
-			endOpacity: 0,
+			startColor: [250, 100, 50, 222],
+			startColorVar: [5, 20, 10, 20],
+			endColor: [0, 0, 0, 0],
+			endColorVar: [0, 0, 0, 0],
+			radius: 2,
 			startScale: 1,
 			endScale: 0.1
 		});

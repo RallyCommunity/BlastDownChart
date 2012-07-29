@@ -8,8 +8,6 @@ var Sequence = cocos.actions.Sequence;
 // only used inside ParticleSystem, use Point instead
 var Vector = require('../geometry/Vector');
 var ParticleSystem = require('../particles/ParticleSystem');
-var OrangeParticle = require('../particles/OrangeParticle');
-var BrownParticle = require('../particles/BrownParticle');
 
 function BaseShip() {
 	BaseShip.superclass.constructor.call(this);
@@ -19,25 +17,27 @@ BaseShip.inherit(cocos.nodes.Node, {
 	_addExplodeParticleSystem: function() {
 		var explode = new ParticleSystem({
 			totalParticles: 100,
-			duration: 1,
+			duration: 0.35,
 			removeWhenDone: true,
 			gravity: new Vector(),
 			centerOfGravity: new Vector(),
-			angle: 90,
+			angle: 0,
 			angleVar: 360,
 			radialAccel: 0,
 			radialAccelVar: 0,
 			position: new Vector(this.position.x, this.position.y),
 			posVar: new Vector(),
-			life: 1.5,
-			lifeVar: 0.75,
-			speed: 30,
+			life: .5,
+			lifeVar: 0.05,
+			speed: 100,
 			speedVar: 8,
 			emissionRate: 100,
 			active: true,
-			particleTypes: [OrangeParticle, BrownParticle],
-			startOpacity: 200,
-			endOpacity: 0,
+			radius: 4,
+			startColor: [222, 200, 10, 200],
+			startColorVar: [30, 25, 2, 10],
+			endColor: [0, 0, 0, 0],
+			endColorVar: [0, 0, 0, 0],
 			startScale: 1,
 			endScale: 0.1
 		});
@@ -46,9 +46,7 @@ BaseShip.inherit(cocos.nodes.Node, {
 	},
 
 	bob: function() {},
-		
 	weaken: function() {},
-	
   strengthen: function() {},
 
 	spawnFrom: function(start, end, callback) {
