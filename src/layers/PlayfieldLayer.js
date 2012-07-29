@@ -1,5 +1,10 @@
 var cocos = require('cocos2d');
+var Sprite = cocos.nodes.Sprite;
+var Director = cocos.Director;
+
 var geom = require('geometry');
+var Rect = geom.Rect;
+var Point = geom.Point;
 
 var ScriptRunner = require('../scripting/ScriptRunner');
 var ScriptHandler = require('../scripting/ScriptHandler');
@@ -9,10 +14,19 @@ var Shoot = require('../actions/Shoot');
 function PlayfieldLayer(script) {
 	PlayfieldLayer.superclass.constructor.call(this);
 
-	var winSize = cocos.Director.sharedDirector.winSize;
+	var winSize = Director.sharedDirector.winSize;
+
+	var bg = new Sprite({
+		file: '/resources/stars.png',
+		rect: new Rect(0, 0, 480, 640)
+	});
+	bg.anchorPoint = new Point(0, 0);
+	bg.zOrder = -5000;
+	
+	this.addChild(bg);
 
 	var player = new Player();
-	player.position = new geom.Point(winSize.width / 2, 40);
+	player.position = new Point(winSize.width / 2, 40);
 	this.addChild(player);
 
 	this._scriptRunner = new ScriptRunner(script, new ScriptHandler(this, player, winSize));

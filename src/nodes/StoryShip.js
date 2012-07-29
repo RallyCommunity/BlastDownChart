@@ -15,8 +15,8 @@ function StoryShip() {
 	StoryShip.superclass.constructor.call(this);
 
 	var sprite = new Sprite({
-		file: '/resources/sprites.png',
-		rect: new Rect(0, 32, 32, 16)
+		file: '/resources/StoryShip.png',
+		rect: new Rect(0, 0, 42, 32)
 	});
 
 	sprite.anchorPoint = new Point(0, 0);

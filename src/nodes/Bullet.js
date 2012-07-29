@@ -1,5 +1,9 @@
 var cocos = require('cocos2d');
+
 var geom = require('geometry');
+var Point = geom.Point;
+var Rect = geom.Rect;
+
 var util = require('util');
 
 function Bullet(target) {
@@ -9,15 +13,15 @@ function Bullet(target) {
 
 	var sprite = new cocos.nodes.Sprite({
 		file: '/resources/sprites.png',
-		rect: new geom.Rect(64, 0, 16, 16)
+		rect: new Rect(64, 0, 16, 16)
 	});
 
-	sprite.anchorPoint = new geom.Point(0, 0)
+	sprite.anchorPoint = new Point(0, 0);
 	this.addChild(sprite);
 
 	this.contentSize = sprite.contentSize;
 
-	this.velocity = new geom.Point(0, 500);
+	this.velocity = new Point(0, 500);
 	this.scheduleUpdate();
 }
 

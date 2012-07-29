@@ -13,6 +13,7 @@ Shoot.inherit(cocos.actions.ActionInstant, {
 	startWithTarget: function(node) {
 		var bullet = new Bullet(this.target);
 		bullet.position = util.copy(node.position);
+		bullet.zOrder = node.zOrder - 1;
 
 		node.parent.addChild(bullet);
 	}
