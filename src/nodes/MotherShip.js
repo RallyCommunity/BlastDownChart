@@ -27,7 +27,7 @@ MotherShip.inherit(BaseShip, {
 	bob: function() {
 		var moveRight = new MoveBy({
 			duration: 2,
-			position: new Point(16, 0),
+			position: new Point(30, 0),
 		});
 		var moveLeft = moveRight.reverse();
 

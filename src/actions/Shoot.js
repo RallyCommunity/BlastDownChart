@@ -16,7 +16,6 @@ Shoot.inherit(cocos.actions.ActionInstant, {
 		bullet.zOrder = node.zOrder - 1;
 
 		node.parent.addChild(bullet);
-		console.log('shooting ' + this.target._id);
 	}
 });
 

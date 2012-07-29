@@ -40,7 +40,7 @@ ScriptHandler.inherit(Object, {
 		var parent = this._layer.findShipById(parentId);
 
 		if(!parent) { // mother ship
-			return new Point(this._winSize.width / 2, this._winSize.height - 20);
+			return new Point(this._winSize.width / 2, this._winSize.height - 60);
 		} else {
 			if(parent._type === 'Mother') {
 				this._piXs = this._piXs || [100, 220, 380];
