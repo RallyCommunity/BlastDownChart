@@ -74,6 +74,18 @@ ScriptHandler.inherit(Object, {
 
 		this._layer.addChild(ship);
 	},
+	
+	strengthen: function(id) {
+		var ship = this._layer.findShipById(id);
+		
+		ship.strengthen();
+	},
+
+	weaken: function(id) {
+		var ship = this._layer.findShipById(id);
+		
+		ship.weaken();
+	},
 
 	shoot: function(id) {
 		var ship = this._layer.findShipById(id);

@@ -3,6 +3,7 @@ var Sprite = cocos.nodes.Sprite;
 var JumpBy = cocos.actions.JumpBy;
 var Sequence = cocos.actions.Sequence;
 var RepeatForever = cocos.actions.RepeatForever;
+var ScaleTo = cocos.actions.ScaleTo;
 
 var geom = require('geometry');
 var Point = geom.Point;
@@ -38,6 +39,20 @@ StoryShip.inherit(BaseShip, {
 		});
 
 		this.runAction(new RepeatForever(jumpSequence));
+	},
+	
+	weaken: function() {
+		this.runAction(new ScaleTo({
+			duration: 1,
+			scale: 1
+		}));
+	},
+	
+  strengthen: function() {
+		this.runAction(new ScaleTo({
+			duration: 1,
+			scale: 2
+		}));
 	}
 });
 

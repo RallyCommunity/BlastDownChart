@@ -1,6 +1,39 @@
+// var sdk = require('./util/sdk-debug');
+// var Ext = sdk.Ext;
+// var Rally = sdk.Rally;
+// 
+// Ext.define('BDC.DataImporter', {
+// 	constructor: function() {
+// 		Ext.create('Rally.data.WsapiDataStore', {
+// 			model: 'UserStory',
+// 			listeners: {
+// 				load: function(store, data, success) {
+// 					var script = this._convertData(data);
+// 				}
+// 			},
+// 			autoLoad: true,
+// 			fetch: ['Name', 'ScheduleState'],
+// 			filters: [{
+// 				property: '_Type',
+// 				operator: 'in',
+// 				value: ['Defect', 'HierarchicalRequirement']
+// 			}]
+// 		});
+// 	},
+// 	
+// 	_convertData: function(data) {
+// 		var scriptData = [];
+// 		
+// 		
+// 	}
+// });
+// 
+// module.exports = BDC.DataImporter;
+var totalTime = 10;
+
 function getData() {
 	return [{
-		at: 0.5,
+		at: totalTime * 0.02,
 		event: 'spawn',
 		args: {
 			type: 'Mother',
@@ -9,7 +42,7 @@ function getData() {
 		}
 	},
 	{
-		at: 3.2,
+		at: totalTime * 0.1,
 		event: 'spawn',
 		args: {
 			type: 'PI',
@@ -19,7 +52,7 @@ function getData() {
 		}
 	},
 	{
-		at: 5.5,
+		at: totalTime * 0.2,
 		event: 'spawn',
 		args: {
 			type: 'Story',
@@ -29,7 +62,7 @@ function getData() {
 		}
 	},
 	{
-		at: 9.8,
+		at: totalTime * 0.3,
 		event: 'spawn',
 		args: {
 			type: 'Story',
@@ -39,22 +72,32 @@ function getData() {
 		}
 	},
 	{
-		at: 14,
+		at: totalTime * 0.4,
+		event: 'strengthen',
+		args: 'S1'
+	},
+	{
+		at: totalTime * 0.6,
 		event: 'shoot',
 		args: 'S2'
 	},
 	{
-		at: 17,
+		at: totalTime * 0.7,
+		event: 'weaken',
+		args: 'S1'
+	},
+	{
+		at: totalTime * 0.8,
 		event: 'shoot',
 		args: 'S1'
 	},
 	{
-		at: 21,
+		at: totalTime * 0.9,
 		event: 'shoot',
 		args: 'PI2'
 	},
 	{
-		at: 22,
+		at: totalTime * 1,
 		event: 'shoot',
 		args: 'PI1'
 	}];

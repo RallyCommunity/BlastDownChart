@@ -43,6 +43,10 @@ BaseShip.inherit(cocos.nodes.Node, {
 	},
 
 	bob: function() {},
+		
+	weaken: function() {},
+	
+  strengthen: function() {},
 
 	spawnFrom: function(start, end, callback) {
 		this.position = start;
