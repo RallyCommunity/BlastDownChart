@@ -41,7 +41,7 @@ ParticleSystem.inherit(Node, {
 		var rand = Random.rand(0, this.particleTypes.length);
 
 		var particle = new this.particleTypes[rand];
-		particle.position = new Point(this.position.x, this.position.y);
+		particle.position = new Point(0, 0);
 		return particle;
 	},
 
@@ -56,8 +56,8 @@ ParticleSystem.inherit(Node, {
 
 	_initParticle: function(particle) {
 		// position
-		particle.rx = this.position.x + this.posVar.x * random11();
-		particle.ry = this.position.y + this.posVar.y * random11();
+		particle.rx = this.posVar.x * random11();
+		particle.ry = this.posVar.y * random11();
 
 		// direction
 		var a = Angles.degreesToRadians(this.angle + this.angleVar * random11());

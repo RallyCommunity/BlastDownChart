@@ -27,8 +27,7 @@ BaseShip.inherit(cocos.nodes.Node, {
 			angleVar: 360,
 			radialAccel: 0,
 			radialAccelVar: 0,
-			// TODO: WTF? Why are particles ending up double what is specified?
-			position: new Vector(this.position.x / 2, this.position.y / 2),
+			position: new Vector(this.position.x, this.position.y),
 			posVar: new Vector(),
 			life: 1.5,
 			lifeVar: 0.75,

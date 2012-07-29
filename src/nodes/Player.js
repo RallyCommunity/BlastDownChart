@@ -47,7 +47,7 @@ Player.inherit(Node, {
 			radialAccelVar: 0,
 			tangentialAccel: 0,
 			tangentialAccelVar: 0,
-			position: new Vector(this.contentSize.width / 4, 5),
+			position: new Vector(this.contentSize.width / 2, 8),
 			posVar: new Vector(),
 			life: 0.5,
 			lifeVar: 0.1,
