@@ -36,7 +36,11 @@ BaseShip.inherit(cocos.nodes.Node, {
 			speedVar: 8,
 			emissionRate: 100,
 			active: true,
-			particleTypes: [OrangeParticle, BrownParticle]
+			particleTypes: [OrangeParticle, BrownParticle],
+			startOpacity: 200,
+			endOpacity: 0,
+			startScale: 1,
+			endScale: 0.1
 		});
 
 		this.parent.addChild(explode);
@@ -68,7 +72,6 @@ BaseShip.inherit(cocos.nodes.Node, {
 	},
 
 	explode: function() {
-		debugger;
 		this._addExplodeParticleSystem();
 		this.parent.removeChild(this);
 	}

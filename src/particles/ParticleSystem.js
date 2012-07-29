@@ -101,6 +101,12 @@ ParticleSystem.inherit(Node, {
 			particle.size = 1;
 			particle.deltaSize = 0;
 		//}
+	
+		particle.children[0].opacity = _.isNumber(this.startOpacity) ? this.startOpacity : 255;
+		particle.deltaOpacity = _.isNumber(this.endOpacity) ? (this.endOpacity - this.startOpacity) : 0;
+
+		particle.scale = _.isNumber(this.startScale) ? this.startScale : 1;
+		particle.deltaScale = _.isNumber(this.endScale) ? (this.endScale - this.startScale) : 0;
 	},
 
 		_addParticle: function() {
@@ -164,6 +170,9 @@ ParticleSystem.inherit(Node, {
 				//p.size += p.deltaSize * delta;
 				//p.size = Math.max(0, p.size);
 				p.life -= delta;
+
+				p.children[0].opacity += p.deltaOpacity * delta;
+				p.scale += p.deltaScale * delta;
 
 				++this._particleIndex;
 			} else {

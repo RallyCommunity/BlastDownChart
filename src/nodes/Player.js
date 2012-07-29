@@ -53,7 +53,11 @@ Player.inherit(Node, {
 			lifeVar: 0.1,
 			emissionRate: 50 / 1,
 			active: true,
-			particleTypes: [Exhaust1Particle, Exhaust2Particle, Exhaust3Particle]
+			particleTypes: [Exhaust1Particle, Exhaust2Particle, Exhaust3Particle],
+			startOpacity: 225,
+			endOpacity: 0,
+			startScale: 1,
+			endScale: 0.1
 		});
 	},
 	
