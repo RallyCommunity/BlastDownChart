@@ -3,6 +3,7 @@ var Sprite = cocos.nodes.Sprite;
 var MoveBy = cocos.actions.MoveBy;
 var Sequence = cocos.actions.Sequence;
 var RepeatForever = cocos.actions.RepeatForever;
+var FadeIn = cocos.actions.FadeIn;
 
 var geom = require('geometry');
 var Point = geom.Point;
@@ -16,14 +17,14 @@ var Vector = require('../geometry/Vector');
 function PIShip() {
 	PIShip.superclass.constructor.call(this);
 
-	var sprite = new Sprite({
+	this.sprite = new Sprite({
 		file: '/resources/PIShip.png',
 		rect: new Rect(0, 0, 50, 55)
 	});
 
-	sprite.anchorPoint = new Point(0, 0);
-	this.addChild(sprite);
-	this.contentSize = sprite.contentSize;
+	this.sprite.anchorPoint = new Point(0, 0);
+	this.addChild(this.sprite);
+	this.contentSize = this.sprite.contentSize;
 }
 
 PIShip.inherit(BaseShip, {
@@ -73,6 +74,11 @@ PIShip.inherit(BaseShip, {
 		});
 
 		this.runAction(new RepeatForever(moveSequence));
+	},
+
+	spawnFrom: function() {
+		PIShip.superclass.spawnFrom.apply(this, arguments);
+		this.sprite.runAction(new FadeIn({duration: 1 }));
 	}
 });
 

@@ -4,6 +4,7 @@ var JumpBy = cocos.actions.JumpBy;
 var Sequence = cocos.actions.Sequence;
 var RepeatForever = cocos.actions.RepeatForever;
 var ScaleTo = cocos.actions.ScaleTo;
+var FadeIn = cocos.actions.FadeIn;
 
 var geom = require('geometry');
 var Point = geom.Point;
@@ -14,14 +15,14 @@ var BaseShip = require('./BaseShip');
 function StoryShip() {
 	StoryShip.superclass.constructor.call(this);
 
-	var sprite = new Sprite({
+	this.sprite = new Sprite({
 		file: '/resources/StoryShip.png',
 		rect: new Rect(0, 0, 42, 32)
 	});
 
-	sprite.anchorPoint = new Point(0, 0);
-	this.addChild(sprite);
-	this.contentSize = sprite.contentSize;
+	this.sprite.anchorPoint = new Point(0, 0);
+	this.addChild(this.sprite);
+	this.contentSize = this.sprite.contentSize;
 }
 
 StoryShip.inherit(BaseShip, {
@@ -53,6 +54,12 @@ StoryShip.inherit(BaseShip, {
 			duration: 1,
 			scale: 2
 		}));
+	},
+
+	spawnFrom: function() {
+		StoryShip.superclass.spawnFrom.apply(this, arguments);
+
+		this.sprite.runAction(new FadeIn({duration: 1 }));
 	}
 });
 
