@@ -26,7 +26,7 @@ function PlayfieldLayer(script) {
 	this.addChild(bg);
 
 	var player = new Player();
-	player.position = new Point(winSize.width / 2, 40);
+	player.position = new Point(winSize.width / 2, 90);
 	this.addChild(player);
 
 	this._scriptRunner = new ScriptRunner(script, new ScriptHandler(this, player, winSize));
