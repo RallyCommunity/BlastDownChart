@@ -29,7 +29,7 @@
 // });
 // 
 // module.exports = BDC.DataImporter;
-var totalTime = 10;
+var totalTime = 30;
 
 function getData() {
 	return [{
@@ -71,21 +71,21 @@ function getData() {
 			title: 'another story'
 		}
 	},
-	{
-		at: totalTime * 0.4,
-		event: 'strengthen',
-		args: 'S1'
-	},
+	//{
+		//at: totalTime * 0.4,
+		//event: 'strengthen',
+		//args: 'S1'
+	//},
 	{
 		at: totalTime * 0.6,
 		event: 'shoot',
 		args: 'S2'
 	},
-	{
-		at: totalTime * 0.7,
-		event: 'weaken',
-		args: 'S1'
-	},
+	//{
+		//at: totalTime * 0.7,
+		//event: 'weaken',
+		//args: 'S1'
+	//},
 	{
 		at: totalTime * 0.8,
 		event: 'shoot',

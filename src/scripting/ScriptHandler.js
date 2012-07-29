@@ -65,10 +65,12 @@ ScriptHandler.inherit(Object, {
 		ship._type = config.type;
 		ship.zOrder = this._getZOrder(config.from);
 
+		var parentShip = this._layer.findShipById(config.from);
+
 		var start = this._getStartForShip(config.from);
 		var destination = this._getDestinationForShip(config.type, config.from);
 		
-		ship.spawnFrom(start, destination, function(ship) {
+		ship.spawnFrom(parentShip, start, destination, function(ship) {
 			ship.bob();
 		});
 

@@ -37,7 +37,7 @@ function PlayfieldLayer(script) {
 PlayfieldLayer.inherit(cocos.nodes.Layer, {
 	findShipById: function(id) {
 		// TODO: this really should be using tags
-		return this.children.filter(function(child) {
+		return id && this.children.filter(function(child) {
 			return child._id === id;
 		})[0];
 	},

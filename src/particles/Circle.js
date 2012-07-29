@@ -23,7 +23,7 @@ Circle.inherit(Node, {
 		return 'rgba(' + r(this.color[0])
 		 + ',' + r(this.color[1])
 		 + ',' + r(this.color[2])
-		 + ',' + r(this.color[3]) + ')'; 
+		 + ',' + this.color[3] / 255 + ')'; 
 	},
 
 	draw: function(ctx, rect) {
@@ -32,11 +32,19 @@ Circle.inherit(Node, {
 			r = this.radius || this.rect.size.width / 2;
 
 		ctx.save();
-		ctx.fillStyle = this._colorToCss();
+
+		if(this.strokeWidth) {
+			ctx.strokeStyle = this._colorToCss();
+			ctx.lineWidth = this.strokeWidth;
+		} else {
+			ctx.fillStyle = this._colorToCss();
+		}
 		ctx.beginPath();
 		ctx.arc(x, y, r, 0 , 2 * Math.PI, false);
 		ctx.closePath();
-		ctx.fill();
+
+		this.strokeWidth ? ctx.stroke() : ctx.fill();
+		
 		ctx.restore();
 	}
 });

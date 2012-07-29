@@ -114,6 +114,12 @@ ParticleSystem.inherit(Node, {
 			particle.color = startColor;
 			particle.deltaColor = [(endColor[0] - startColor[0]) / particle.life, (endColor[1] - startColor[1]) / particle.life, (endColor[2] - startColor[2]) / particle.life, (endColor[3] - startColor[3]) / particle.life];
 		}
+
+		if(this.startStrokeWidth) {
+			particle.strokeWidth = this.startStrokeWidth + (this.startStrokeWidthVar || 0) * random11();
+			particle.strokeWidthDelta = (this.endStrokeWidth || particle.strokeWidth) - particle.strokeWidth;
+			particle.strokeWidthDelta /= particle.life;
+		}
 	},
 
 	_addParticle: function() {
@@ -175,12 +181,8 @@ ParticleSystem.inherit(Node, {
 			p.rx += p.tmp.x;
 			p.ry += p.tmp.y;
 
-			//p.position.x = p.rx;
-			//p.position.y = p.ry;
 			p.position = new Point(p.rx, p.ry);
 
-			//p.size += p.deltaSize * delta;
-			//p.size = Math.max(0, p.size);
 			p.life -= delta;
 
 			if (p.children && p.children[0]) {
@@ -193,6 +195,10 @@ ParticleSystem.inherit(Node, {
 				p.color[1] += p.deltaColor[1] * delta;
 				p.color[2] += p.deltaColor[2] * delta;
 				p.color[3] += p.deltaColor[3] * delta;
+			}
+
+			if(p.strokeWidth) {
+				p.strokeWidth += p.strokeWidthDelta * delta;
 			}
 
 			++this._particleIndex;
