@@ -6,18 +6,23 @@ var Rect = geom.Rect;
 
 var util = require('util');
 
+var ParticleSystem = require('../particles/ParticleSystem');
+var Vector = require('../geometry/Vector');
+
 function Bullet(target) {
 	Bullet.superclass.constructor.call(this);
 
 	this._target = target;
 
 	var sprite = new cocos.nodes.Sprite({
-		file: '/resources/sprites.png',
-		rect: new Rect(64, 0, 16, 16)
+		file: '/resources/Bullet.png',
+		rect: new Rect(0, 0, 4, 6)
 	});
 
 	sprite.anchorPoint = new Point(0, 0);
 	this.addChild(sprite);
+
+	this.addChild(this._createGlow());
 
 	this.contentSize = sprite.contentSize;
 
@@ -26,6 +31,37 @@ function Bullet(target) {
 }
 
 Bullet.inherit(cocos.nodes.Node, {
+	_createGlow: function() {
+		return new ParticleSystem({
+			totalParticles: 200,
+			duration: Infinity,
+			gravity: new Vector(0, -5),
+			centerOfGravity: new Vector(),
+			angle: -90,
+			angleVar: 7,
+			speed: 35,
+			speedVar: 5,
+			radialAccel: -20,
+			radialAccelVar: 0,
+			tangentialAccel: 20,
+			tangentialAccelVar: 0,
+			position: new Vector(2, 4),
+			posVar: new Vector(),
+			life: 0.35,
+			lifeVar: 0.1,
+			emissionRate: 200 / 4,
+			startColor: [181, 253, 172, 180],
+			startColorVar: [0, 0, 0, 0],
+			endColor: [0, 0, 0, 0],
+			endColorVar: [0, 0, 0, 0],
+			radius: 3,
+			startScale: 1,
+			endScale: 0.01,
+			zOrder: -1,
+			active: true
+		});
+	},
+
 	_checkForTargetCollision: function() {
 		var targetBox = this._target.boundingBox;
 
