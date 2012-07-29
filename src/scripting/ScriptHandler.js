@@ -1,3 +1,7 @@
+var cocos = require('cocos2d');
+var Label = cocos.nodes.Label;
+var FadeIn = cocos.actions.FadeIn;
+
 var geom = require('geometry');
 var Point = geom.Point;
 
@@ -66,6 +70,7 @@ ScriptHandler.inherit(Object, {
 		var ship = new Constructor();
 		ship._id = config.id;
 		ship._type = config.type;
+		ship._name = config.name;
 		ship.zOrder = this._getZOrder(config.from);
 
 		var parentShip = this._layer.findShipById(config.from);
@@ -98,6 +103,16 @@ ScriptHandler.inherit(Object, {
 		if (ship) {
 			this._player.shootAt(ship);
 		}
+	},
+
+	levelClear: function(text) {
+		text = text || 'Level Cleared!';
+		var label = new Label({string: text});
+		label.anchorPoint = new Point(0.5, 0.5);
+
+		label.position = new Point(this._layer.contentSize.width / 2, this._layer.contentSize.height /2);
+		this._layer.addChild(label);
+		label.runAction(new FadeIn({ duration: 2 }));
 	}
 });
 

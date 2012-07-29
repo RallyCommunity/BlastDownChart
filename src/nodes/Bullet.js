@@ -68,6 +68,8 @@ Bullet.inherit(cocos.nodes.Node, {
 		if (geom.rectOverlapsRect(this.boundingBox, targetBox)) {
 			this._target.explode();
 			this.parent.removeChild(this);
+
+			this.onImpact && this.onImpact(this._target);
 		}
 	},
 

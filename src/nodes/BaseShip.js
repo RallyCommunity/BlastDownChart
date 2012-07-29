@@ -60,7 +60,7 @@ BaseShip.inherit(cocos.nodes.Node, {
 		new CallFunc({
 			target: this,
 			method: function() {
-				parentShip && parentShip.hatchGlow(0.6);
+				parentShip && parentShip.hatchGlow(1.2);
 			}
 		}),
 		new MoveTo({

@@ -38,7 +38,7 @@ function getData() {
 		args: {
 			type: 'Mother',
 			id: 'PI1',
-			title: 'Mother Strategy'
+			name: 'Mother Strategy'
 		}
 	},
 	{
@@ -48,7 +48,7 @@ function getData() {
 			type: 'PI',
 			id: 'PI2',
 			from: 'PI1',
-			title: 'first child PI'
+			name: 'first child PI'
 		}
 	},
 	{
@@ -58,7 +58,7 @@ function getData() {
 			type: 'Story',
 			id: 'S1',
 			from: 'PI2',
-			title: 'first story'
+			name: 'first story'
 		}
 	},
 	{
@@ -67,7 +67,8 @@ function getData() {
 		args: {
 			type: 'PI',
 			id: 'PI3',
-			from: 'PI1'
+			from: 'PI1',
+			name: 'another PI'
 		}
 	},
 	{
@@ -77,7 +78,7 @@ function getData() {
 			type: 'Story',
 			id: 'S2',
 			from: 'PI2',
-			title: 'another story'
+			name: 'another story'
 		}
 	},
 	{
@@ -86,7 +87,8 @@ function getData() {
 		args: {
 			type: 'Story',
 			id: 'S3',
-			from: 'PI3'
+			from: 'PI3',
+			name: 'yet more story work'
 		}
 	},
 	{
@@ -100,7 +102,8 @@ function getData() {
 		args: {
 			type: 'Story',
 			id: 'S4',
-			from: 'PI3'
+			from: 'PI3',
+			name: 'and another story'
 		}
 	},
 	{
@@ -114,7 +117,8 @@ function getData() {
 		args: {
 			type: 'Story',
 			id: 'S5',
-			from: 'PI3'
+			from: 'PI3',
+			name: 'the final story'
 		}
 	},
 	{
@@ -146,6 +150,10 @@ function getData() {
 		at: totalTime * 1.47,
 		event: 'shoot',
 		args: 'PI1'
+	},
+	{
+		at: totalTime * 1.57,
+		event: 'levelClear'
 	}];
 }
 
