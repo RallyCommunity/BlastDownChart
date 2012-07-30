@@ -33,8 +33,6 @@ function PlayfieldLayer(script) {
 	this._scriptRunner = new ScriptRunner(script, new ScriptHandler(this, this.player, winSize));
 
 	this.scheduleUpdate();
-
-	this.flyPlayerIn();
 }
 
 PlayfieldLayer.inherit(cocos.nodes.Layer, {
@@ -45,8 +43,14 @@ PlayfieldLayer.inherit(cocos.nodes.Layer, {
 		})[0];
 	},
 
+	startScript: function() {
+		this._scriptRunning = true;
+	},
+
 	update: function(dt) {
-		this._scriptRunner.update(dt);
+		if(this._scriptRunning) {
+			this._scriptRunner.update(dt);
+		}
 	},
 
 	flyPlayerIn: function() {

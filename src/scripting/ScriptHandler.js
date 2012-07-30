@@ -9,6 +9,7 @@ var MotherShip = require('../nodes/MotherShip');
 var PIShip = require('../nodes/PIShip');
 var StoryShip = require('../nodes/StoryShip');
 var LevelComplete = require('../nodes/LevelComplete');
+var LevelStart = require('../nodes/LevelStart');
 
 var Random = require('../util/Random');
 
@@ -28,6 +29,8 @@ function ScriptHandler(layer, player, winSize) {
 	this._layer = layer;
 	this._player = player;
 	this._winSize = winSize;
+
+	this.levelStart();
 }
 
 ScriptHandler.inherit(Object, {
@@ -106,7 +109,18 @@ ScriptHandler.inherit(Object, {
 		}
 	},
 
-	levelClear: function(text) {
+	levelStart: function() {
+		var me = this;
+
+		var levelStart = new LevelStart(this._layer.contentSize);
+		this._layer.addChild(levelStart);
+		levelStart.go(function() {
+			me._layer.flyPlayerIn();
+			me._layer.startScript();
+		});
+	},
+
+	levelClear: function() {
 		var me = this;
 
 		var levelComplete = new LevelComplete(this._layer.contentSize);
