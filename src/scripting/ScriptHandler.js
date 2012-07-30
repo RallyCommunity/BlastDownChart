@@ -48,12 +48,12 @@ ScriptHandler.inherit(Object, {
 		var parent = this._layer.findShipById(parentId);
 
 		if(!parent) { // mother ship
-			return new Point(this._winSize.width / 2, this._winSize.height - 60);
+			return new Point(this._winSize.width / 2, this._winSize.height - 100);
 		} else {
 			if(parent._type === 'Mother') {
 				this._piXs = this._piXs || [100, 220, 380];
 
-				return new Point(this._piXs.pop(), this._winSize.height - 150 + Random.rand(-20, 30));
+				return new Point(this._piXs.pop(), this._winSize.height - 230 + Random.rand(-20, 30));
 			} else {
 				parent._yc = parent._yc || 1;
 				return new Point(parent.position.x, parent.position.y - 50 - (parent._yc++ * 50)); 

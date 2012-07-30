@@ -14,8 +14,8 @@ function MotherShip() {
 	MotherShip.superclass.constructor.call(this);
 
 	var sprite = new Sprite({
-		file: '/resources/sprites.png',
-		rect: new Rect(0, 16, 128, 16)
+		file: '/resources/MotherShip.png',
+		rect: new Rect(0, 0, 276, 138)
 	});
 
 	sprite.anchorPoint = new Point(0, 0);
@@ -36,6 +36,18 @@ MotherShip.inherit(BaseShip, {
 		});
 
 		this.runAction(new RepeatForever(moveSequence));
+	},
+
+	explode: function() {
+
+		var explosionXs = [ -60, -30, 0, 30, 60 ];
+
+		for(var i = 0; i < explosionXs.length; ++i) {
+			var xOffset = explosionXs[i];
+			var p = new Point(this.position.x + xOffset, this.position.y);
+			this.parent.addChild(this._createExplode(p));
+		}
+		this.parent.removeChild(this);
 	}
 });
 

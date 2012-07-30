@@ -15,7 +15,7 @@ function BaseShip() {
 }
 
 BaseShip.inherit(cocos.nodes.Node, {
-	_createExplode: function() {
+	_createExplode: function(position) {
 		return new ParticleSystem({
 			totalParticles: 25,
 			duration: 0.35,
@@ -26,7 +26,7 @@ BaseShip.inherit(cocos.nodes.Node, {
 			angleVar: 360,
 			radialAccel: 0,
 			radialAccelVar: 0,
-			position: new Vector(this.position.x, this.position.y),
+			position: position || new Vector(this.position.x, this.position.y),
 			posVar: new Vector(4, 4),
 			life: .5,
 			lifeVar: 0,

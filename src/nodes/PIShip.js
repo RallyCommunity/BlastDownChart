@@ -74,11 +74,6 @@ PIShip.inherit(BaseShip, {
 		});
 
 		this.runAction(new RepeatForever(moveSequence));
-	},
-
-	spawnFrom: function() {
-		PIShip.superclass.spawnFrom.apply(this, arguments);
-		this.sprite.runAction(new FadeIn({duration: 1 }));
 	}
 });
 
