@@ -79,7 +79,7 @@ BaseShip.inherit(cocos.nodes.Node, {
 			actions: actions
 		}));
 
-		this.scale = 0.01;
+		this.scale = 0.25;
 		this.runAction(new ScaleTo({
 			duration: 1.2,
 			scale: 1

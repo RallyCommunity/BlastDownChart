@@ -107,12 +107,12 @@ function getData() {
 		}
 	},
 	{
-		at: totalTime * 0.92,
+		at: totalTime * 0.75,
 		event: 'shoot',
 		args: 'S4'
 	},
 	{
-		at: totalTime * 0.95,
+		at: totalTime * 0.78,
 		event: 'spawn',
 		args: {
 			type: 'Story',
@@ -122,37 +122,37 @@ function getData() {
 		}
 	},
 	{
-		at: totalTime * 1.1,
+		at: totalTime * 0.93,
 		event: 'shoot',
 		args: 'S5'
 	},
 	{
-		at: totalTime * 1.2,
+		at: totalTime * 1.03,
 		event: 'shoot',
 		args: 'S3'
 	},
 	{
-		at: totalTime * 1.24,
+		at: totalTime * 1.07,
 		event: 'shoot',
 		args: 'PI3'
 	},
 	{
-		at: totalTime * 1.35,
+		at: totalTime * 1.18,
 		event: 'shoot',
 		args: 'S1'
 	},
 	{
-		at: totalTime * 1.40,
+		at: totalTime * 1.23,
 		event: 'shoot',
 		args: 'PI2'
 	},
 	{
-		at: totalTime * 1.47,
+		at: totalTime * 1.30,
 		event: 'shoot',
 		args: 'PI1'
 	},
 	{
-		at: totalTime * 1.57,
+		at: totalTime * 1.40,
 		event: 'levelClear'
 	}];
 }

@@ -54,12 +54,6 @@ StoryShip.inherit(BaseShip, {
 			duration: 1,
 			scale: 2
 		}));
-	},
-
-	spawnFrom: function() {
-		StoryShip.superclass.spawnFrom.apply(this, arguments);
-
-		this.sprite.runAction(new FadeIn({duration: 1 }));
 	}
 });
 
