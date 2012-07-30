@@ -8,6 +8,7 @@ var Point = geom.Point;
 var MotherShip = require('../nodes/MotherShip');
 var PIShip = require('../nodes/PIShip');
 var StoryShip = require('../nodes/StoryShip');
+var LevelComplete = require('../nodes/LevelComplete');
 
 var Random = require('../util/Random');
 
@@ -106,14 +107,13 @@ ScriptHandler.inherit(Object, {
 	},
 
 	levelClear: function(text) {
-		text = text || 'Level Cleared!';
-		var label = new Label({string: text});
-		label.anchorPoint = new Point(0.5, 0.5);
+		var me = this;
 
-		label.position = new Point(this._layer.contentSize.width / 2, this._layer.contentSize.height /2);
-		label.opacity = 0;
-		this._layer.addChild(label);
-		label.runAction(new FadeIn({ duration: 2 }));
+		var levelComplete = new LevelComplete(this._layer.contentSize);
+		this._layer.addChild(levelComplete);
+		levelComplete.go(function() {
+			me._layer.flyPlayerOff();
+		});
 	}
 });
 

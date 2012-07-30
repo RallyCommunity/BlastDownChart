@@ -1,5 +1,6 @@
 var cocos = require('cocos2d');
 var Sprite = cocos.nodes.Sprite;
+var MoveBy = cocos.actions.MoveBy;
 var Director = cocos.Director;
 
 var geom = require('geometry');
@@ -25,13 +26,15 @@ function PlayfieldLayer(script) {
 	
 	this.addChild(bg);
 
-	var player = new Player();
-	player.position = new Point(winSize.width / 2, 90);
-	this.addChild(player);
+	this.player = new Player();
+	this.player.position = new Point(winSize.width / 2, -30);
+	this.addChild(this.player);
 
-	this._scriptRunner = new ScriptRunner(script, new ScriptHandler(this, player, winSize));
+	this._scriptRunner = new ScriptRunner(script, new ScriptHandler(this, this.player, winSize));
 
 	this.scheduleUpdate();
+
+	this.flyPlayerIn();
 }
 
 PlayfieldLayer.inherit(cocos.nodes.Layer, {
@@ -44,6 +47,20 @@ PlayfieldLayer.inherit(cocos.nodes.Layer, {
 
 	update: function(dt) {
 		this._scriptRunner.update(dt);
+	},
+
+	flyPlayerIn: function() {
+		this.player.runAction(new MoveBy({
+			duration: 1,
+			position: new Point(0, 100)
+		}));
+	},
+
+	flyPlayerOff: function() {
+		this.player.runAction(new MoveBy({
+			duration: 2,
+			position: new Point(0, this.contentSize.height + 100)
+		}));
 	}
 });
 
