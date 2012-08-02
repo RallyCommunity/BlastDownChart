@@ -7,6 +7,7 @@ var util = require('util');
 
 var ParticleSystem = require('../particles/ParticleSystem');
 var Vector = require('../geometry/Vector');
+var Textures = require('../Textures');
 
 function Bullet(target) {
 	Bullet.superclass.constructor.call(this);
@@ -14,13 +15,13 @@ function Bullet(target) {
 	this._target = target;
 
 	var sprite = new cocos.nodes.Sprite({
-		file: '/resources/Bullet.png'
+		texture: Textures.Bullet
 	});
 
 	sprite.anchorPoint = new Point(0, 0);
 	this.addChild(sprite);
 
-	this.addChild(this._createGlow());
+	//this.addChild(this._createGlow());
 
 	this.contentSize = sprite.contentSize;
 

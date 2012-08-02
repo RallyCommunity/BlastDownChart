@@ -13,11 +13,13 @@ var Shoot = require('../actions/Shoot');
 var Vector = require('../geometry/Vector');
 var ParticleSystem = require('../particles/ParticleSystem');
 
+var Textures = require('../Textures');
+
 function Player() {
 	Player.superclass.constructor.call(this);
 
 	var sprite = new Sprite({
-		file: '/resources/Player.png'
+		texture: Textures.Player
 	});
 
 	sprite.anchorPoint = new Point(0, 0);

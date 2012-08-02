@@ -13,11 +13,13 @@ var BaseShip = require('./BaseShip');
 var ParticleSystem = require('../particles/ParticleSystem');
 var Vector = require('../geometry/Vector');
 
+var Textures = require('../Textures');
+
 function PIShip() {
 	PIShip.superclass.constructor.call(this);
 
 	this.sprite = new Sprite({
-		file: '/resources/PIShip.png'
+		texture: Textures.PIShip
 	});
 
 	this.sprite.anchorPoint = new Point(0, 0);

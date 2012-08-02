@@ -8,12 +8,13 @@ var geom = require('geometry');
 var Point = geom.Point;
 
 var BaseShip = require('./BaseShip');
+var Textures = require('../Textures');
 
 function MotherShip() {
 	MotherShip.superclass.constructor.call(this);
 
 	var sprite = new Sprite({
-		file: '/resources/MotherShip.png'
+		texture: Textures.MotherShip
 	});
 
 	sprite.anchorPoint = new Point(0, 0);

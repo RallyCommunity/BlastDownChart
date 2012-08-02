@@ -11,6 +11,7 @@ var geom = require('geometry');
 var Point = geom.Point;
 
 var LevelComplete = require('./LevelComplete');
+var Textures = require('../Textures');
 
 function LevelStart(contentSize) {
 	LevelStart.superclass.constructor.call(this);
@@ -19,10 +20,10 @@ function LevelStart(contentSize) {
 
 	var y = this.contentSize.height / 2;
 
-	this.level = LevelComplete.prototype._createSprite.call(this, '/resources/Level1.png');
+	this.level = LevelComplete.prototype._createSprite.call(this, Textures.Level1);
 	this.level.position = new Point(100, y);
 
-	this.start = LevelComplete.prototype._createSprite.call(this, '/resources/Start.png');
+	this.start = LevelComplete.prototype._createSprite.call(this, Textures.Start);
 	this.start.position = new Point(260, y);
 }
 

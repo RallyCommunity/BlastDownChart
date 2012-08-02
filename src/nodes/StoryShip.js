@@ -11,11 +11,13 @@ var Point = geom.Point;
 
 var BaseShip = require('./BaseShip');
 
+var Textures = require('../Textures');
+
 function StoryShip() {
 	StoryShip.superclass.constructor.call(this);
 
 	this.sprite = new Sprite({
-		file: '/resources/StoryShip.png'
+		texture: Textures.StoryShip
 	});
 
 	this.sprite.anchorPoint = new Point(0, 0);

@@ -21,24 +21,24 @@ var Director = cocos.Director;
 var DataImporter = require('./DataImporter');
 var PlayfieldLayer = require('./layers/PlayfieldLayer');
 var Vector = require('./geometry/Vector');
+var Textures = require('./Textures');
 
 function main() {
-	var director = Director.sharedDirector;
-	director.maxFrameRate = 60;
-	//director.displayFPS = true;
+	Textures.load(function() {
 
-	events.addListener(director, 'ready', function(director) {
+		var director = Director.sharedDirector;
+		director.maxFrameRate = 60;
+		director.attachInView();
+		//director.displayFPS = true;
 		var dataImporter = new DataImporter();
 		dataImporter.onDataReady(function(script) {
 			var scene = new Scene();
 			var layer = new PlayfieldLayer(script);
 
 			scene.addChild(layer);
-			director.replaceScene(scene);
+			director.runWithScene(scene);
 		});
-	})
-
-	director.runPreloadScene();
+	});
 }
 
 exports.main = main;

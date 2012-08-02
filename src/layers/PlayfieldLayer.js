@@ -10,6 +10,7 @@ var ScriptRunner = require('../scripting/ScriptRunner');
 var ScriptHandler = require('../scripting/ScriptHandler');
 var Player = require('../nodes/Player');
 var Shoot = require('../actions/Shoot');
+var Textures = require('../Textures');
 
 function PlayfieldLayer(script) {
 	PlayfieldLayer.superclass.constructor.call(this);
@@ -17,7 +18,7 @@ function PlayfieldLayer(script) {
 	var winSize = Director.sharedDirector.winSize;
 
 	var bg = new Sprite({
-		file: '/resources/stars.png'
+		texture: Textures.stars
 	});
 	bg.anchorPoint = new Point(0, 0);
 	bg.zOrder = -5000;
