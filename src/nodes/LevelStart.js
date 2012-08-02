@@ -9,7 +9,6 @@ var CallFunc = cocos.actions.CallFunc;
 
 var geom = require('geometry');
 var Point = geom.Point;
-var Rect = geom.Rect;
 
 var LevelComplete = require('./LevelComplete');
 
@@ -20,10 +19,10 @@ function LevelStart(contentSize) {
 
 	var y = this.contentSize.height / 2;
 
-	this.level = LevelComplete.prototype._createSprite.call(this, '/resources/Level1.png', 145);
+	this.level = LevelComplete.prototype._createSprite.call(this, '/resources/Level1.png');
 	this.level.position = new Point(100, y);
 
-	this.start = LevelComplete.prototype._createSprite.call(this, '/resources/Start.png', 107);
+	this.start = LevelComplete.prototype._createSprite.call(this, '/resources/Start.png');
 	this.start.position = new Point(260, y);
 }
 

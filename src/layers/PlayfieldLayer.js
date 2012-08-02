@@ -4,7 +4,6 @@ var MoveBy = cocos.actions.MoveBy;
 var Director = cocos.Director;
 
 var geom = require('geometry');
-var Rect = geom.Rect;
 var Point = geom.Point;
 
 var ScriptRunner = require('../scripting/ScriptRunner');
@@ -18,8 +17,7 @@ function PlayfieldLayer(script) {
 	var winSize = Director.sharedDirector.winSize;
 
 	var bg = new Sprite({
-		file: '/resources/stars.png',
-		rect: new Rect(0, 0, 480, 640)
+		file: '/resources/stars.png'
 	});
 	bg.anchorPoint = new Point(0, 0);
 	bg.zOrder = -5000;

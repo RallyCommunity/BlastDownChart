@@ -7,7 +7,6 @@ var DelayTime = cocos.actions.DelayTime;
 
 var geom = require('geometry');
 var Point = geom.Point;
-var Rect = geom.Rect;
 
 var Shoot = require('../actions/Shoot');
 
@@ -18,8 +17,7 @@ function Player() {
 	Player.superclass.constructor.call(this);
 
 	var sprite = new Sprite({
-		file: '/resources/Player.png',
-		rect: new Rect(0, 0, 31, 44)
+		file: '/resources/Player.png'
 	});
 
 	sprite.anchorPoint = new Point(0, 0);

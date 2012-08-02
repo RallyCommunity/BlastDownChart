@@ -9,7 +9,6 @@ var CallFunc = cocos.actions.CallFunc;
 
 var geom = require('geometry');
 var Point = geom.Point;
-var Rect = geom.Rect;
 
 function LevelComplete(contentSize) {
 	LevelComplete.superclass.constructor.call(this);
@@ -18,18 +17,17 @@ function LevelComplete(contentSize) {
 
 	var y = this.contentSize.height / 2;
 
-	this.level = this._createSprite('/resources/Level.png', 91);
+	this.level = this._createSprite('/resources/Level.png');
 	this.level.position = new Point(-30, y);
 
-	this.complete = this._createSprite('/resources/Complete.png', 164);
+	this.complete = this._createSprite('/resources/Complete.png');
 	this.complete.position = new Point(this.contentSize.width, y);
 }
 
 LevelComplete.inherit(Node, {
-	_createSprite: function(file, width) {
+	_createSprite: function(file) {
 		var sprite = new Sprite({
-			file: file,
-			rect: new Rect(0, 0, width, 22)
+			file: file
 		});
 		sprite.opacity = 0;
 		sprite.anchorPoint = new Point(0, 0.5);

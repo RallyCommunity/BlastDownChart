@@ -2,7 +2,6 @@ var cocos = require('cocos2d');
 
 var geom = require('geometry');
 var Point = geom.Point;
-var Rect = geom.Rect;
 
 var util = require('util');
 
@@ -15,8 +14,7 @@ function Bullet(target) {
 	this._target = target;
 
 	var sprite = new cocos.nodes.Sprite({
-		file: '/resources/Bullet.png',
-		rect: new Rect(0, 0, 4, 6)
+		file: '/resources/Bullet.png'
 	});
 
 	sprite.anchorPoint = new Point(0, 0);

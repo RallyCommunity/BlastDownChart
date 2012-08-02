@@ -6,7 +6,6 @@ var RepeatForever = cocos.actions.RepeatForever;
 
 var geom = require('geometry');
 var Point = geom.Point;
-var Rect = geom.Rect;
 
 var BaseShip = require('./BaseShip');
 
@@ -14,8 +13,7 @@ function MotherShip() {
 	MotherShip.superclass.constructor.call(this);
 
 	var sprite = new Sprite({
-		file: '/resources/MotherShip.png',
-		rect: new Rect(0, 0, 276, 138)
+		file: '/resources/MotherShip.png'
 	});
 
 	sprite.anchorPoint = new Point(0, 0);

@@ -8,7 +8,6 @@ var FadeIn = cocos.actions.FadeIn;
 
 var geom = require('geometry');
 var Point = geom.Point;
-var Rect = geom.Rect;
 
 var BaseShip = require('./BaseShip');
 
@@ -16,8 +15,7 @@ function StoryShip() {
 	StoryShip.superclass.constructor.call(this);
 
 	this.sprite = new Sprite({
-		file: '/resources/StoryShip.png',
-		rect: new Rect(0, 0, 42, 32)
+		file: '/resources/StoryShip.png'
 	});
 
 	this.sprite.anchorPoint = new Point(0, 0);

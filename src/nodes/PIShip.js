@@ -7,7 +7,6 @@ var FadeIn = cocos.actions.FadeIn;
 
 var geom = require('geometry');
 var Point = geom.Point;
-var Rect = geom.Rect;
 
 var BaseShip = require('./BaseShip');
 
@@ -18,8 +17,7 @@ function PIShip() {
 	PIShip.superclass.constructor.call(this);
 
 	this.sprite = new Sprite({
-		file: '/resources/PIShip.png',
-		rect: new Rect(0, 0, 50, 55)
+		file: '/resources/PIShip.png'
 	});
 
 	this.sprite.anchorPoint = new Point(0, 0);
