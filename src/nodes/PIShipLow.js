@@ -13,11 +13,11 @@ var BaseShip = require('./BaseShip');
 
 var Textures = require('../Textures');
 
-function StoryShip() {
-	StoryShip.superclass.constructor.call(this);
+function PIShipLow() {
+	PIShipLow.superclass.constructor.call(this);
 
 	this.sprite = new Sprite({
-		texture: Textures.StoryShip
+		texture: Textures.PIShipLow
 	});
 
 	this.sprite.anchorPoint = new Point(0, 0);
@@ -25,7 +25,7 @@ function StoryShip() {
 	this.contentSize = this.sprite.contentSize;
 }
 
-StoryShip.inherit(BaseShip, {
+PIShipLow.inherit(BaseShip, {
 	bob: function() {
 		var jumpRight = new JumpBy({
 			duration: 0.5,
@@ -57,7 +57,8 @@ StoryShip.inherit(BaseShip, {
 	}
 });
 
-module.exports = StoryShip;
+module.exports = PIShipLow;
+
 
 
 

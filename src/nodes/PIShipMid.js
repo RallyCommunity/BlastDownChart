@@ -19,7 +19,7 @@ function PIShipMid() {
 	PIShipMid.superclass.constructor.call(this);
 
 	this.sprite = new Sprite({
-		texture: Textures.PIShip
+		texture: Textures.PIShipMid
 	});
 
 	this.sprite.anchorPoint = new Point(0, 0);
