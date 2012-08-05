@@ -17,7 +17,7 @@ function StoryShip() {
 	StoryShip.superclass.constructor.call(this);
 
 	this.sprite = new Sprite({
-		texture: Textures.StoryShip
+		texture: Textures.StoryShipSmall
 	});
 
 	this.sprite.anchorPoint = new Point(0, 0);

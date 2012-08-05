@@ -23,7 +23,7 @@ function PlayfieldLayer(script) {
 	bg.anchorPoint = new Point(0, 0);
 	bg.zOrder = -5000;
 	
-	this.addChild(bg);
+	//this.addChild(bg);
 
 	this.player = new Player();
 	this.player.position = new Point(winSize.width / 2, -30);

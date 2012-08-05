@@ -65,8 +65,8 @@ LevelComplete.inherit(Node, {
 
 	go: function(callback) {
 		var duration = 2;
-		this._go(this.level, duration, 110);
-		this._go(this.complete, duration, 220, callback);
+		this._go(this.level, duration, this.contentSize.width / 2 - this.level.contentSize.width - 10);
+		this._go(this.complete, duration, this.contentSize.width / 2 + 10, callback);
 	}
 });
 

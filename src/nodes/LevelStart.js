@@ -21,10 +21,10 @@ function LevelStart(contentSize) {
 	var y = this.contentSize.height / 2;
 
 	this.level = LevelComplete.prototype._createSprite.call(this, Textures.Level1);
-	this.level.position = new Point(100, y);
+	this.level.position = new Point(contentSize.width / 2 - this.level.contentSize.width - 10, y);
 
 	this.start = LevelComplete.prototype._createSprite.call(this, Textures.Start);
-	this.start.position = new Point(260, y);
+	this.start.position = new Point(contentSize.width / 2 + 10, y);
 }
 
 LevelStart.inherit(Node, {

@@ -3,6 +3,9 @@ var Sprite = cocos.nodes.Sprite;
 var MoveBy = cocos.actions.MoveBy;
 var Sequence = cocos.actions.Sequence;
 var RepeatForever = cocos.actions.RepeatForever;
+var MoveTo = cocos.actions.MoveTo;
+var DelayTime = cocos.actions.DelayTime;
+var CallFunc = cocos.actions.CallFunc;
 
 var geom = require('geometry');
 var Point = geom.Point;
@@ -47,6 +50,33 @@ MotherShip.inherit(BaseShip, {
 			this.parent.addChild(this._createExplode(p));
 		}
 		this.parent.removeChild(this);
+	},
+
+	spawnFrom: function(parentShip, start, end, callback) {
+		this.position = start;
+
+		var actions = [
+		new CallFunc({
+			target: this,
+			method: function() {
+				parentShip && parentShip.hatchGlow(1.2);
+			}
+		}),
+		new MoveTo({
+			duration: 3,
+			position: end
+		}), 
+		new DelayTime({duration: 1}), 
+		new CallFunc({
+			target: this,
+			method: function() {
+				callback(this);
+			}
+		})];
+
+		this.runAction(new Sequence({
+			actions: actions
+		}));
 	}
 });
 
