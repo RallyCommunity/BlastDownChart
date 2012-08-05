@@ -15,8 +15,8 @@ var Vector = require('../geometry/Vector');
 
 var Textures = require('../Textures');
 
-function PIShip() {
-	PIShip.superclass.constructor.call(this);
+function PIShipMid() {
+	PIShipMid.superclass.constructor.call(this);
 
 	this.sprite = new Sprite({
 		texture: Textures.PIShip
@@ -27,7 +27,7 @@ function PIShip() {
 	this.contentSize = this.sprite.contentSize;
 }
 
-PIShip.inherit(BaseShip, {
+PIShipMid.inherit(BaseShip, {
 	_createHatchGlow: function(duration) {
 		return new ParticleSystem({
 			totalParticles: 320,
@@ -77,7 +77,7 @@ PIShip.inherit(BaseShip, {
 	}
 });
 
-module.exports = PIShip;
+module.exports = PIShipMid;
 
 
 

@@ -45,7 +45,7 @@ function getData() {
 		at: totalTime * 0.1,
 		event: 'spawn',
 		args: {
-			type: 'PI',
+			type: 'PIMid',
 			id: 'PI2',
 			from: 'PI1',
 			name: 'first child PI'
@@ -65,7 +65,7 @@ function getData() {
 		at: totalTime * 0.25,
 		event: 'spawn',
 		args: {
-			type: 'PI',
+			type: 'PIMid',
 			id: 'PI3',
 			from: 'PI1',
 			name: 'another PI'
