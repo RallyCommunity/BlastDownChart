@@ -8,7 +8,7 @@ task :rallyapp => :cocos_make do
 	js_root = './build/bdc'
 	js_files = ["#{js_root}/jah.js", "#{js_root}/cocos2d.js", "#{js_root}/bdc.js"]
 
-	concatted = concat(js_files)
+	concatted = concat(js_files, ENV['compress'] == 'true')
 
 	html = Template::TEMPLATE_TOP + concatted + Template::TEMPLATE_BOTTOM
 
@@ -31,20 +31,24 @@ end
 
 
 
-def concat(files) 
+def concat(files, compress) 
 	compiler = Closure::Compiler.new(:language_in => 'ECMASCRIPT5')
 
 	concatted = ""
   files.each do |script_name|
-		puts "checking: #{script_name}"
+		puts "#{compress ? 'checking' : 'concatting'}: #{script_name}"
 		raw = IO.read(script_name)
 		# if minification fails, this will throw and kill the task, giving decent error output to boot
-    compiler.compile(raw)
+    compiler.compile(raw) if compress
 		concatted += raw
   end
 
-	puts "compiling entire mess of JS together..."
-	compiler.compile(concatted)
+	if compress
+		puts "compiling entire mess of JS together..."
+		compiler.compile(concatted)
+	else 
+		concatted
+	end
 end
 
 module Template
