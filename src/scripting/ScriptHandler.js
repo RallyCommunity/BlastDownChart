@@ -6,6 +6,7 @@ var geom = require('geometry');
 var Point = geom.Point;
 
 var MotherShip = require('../nodes/MotherShip');
+var PIShipHigh = require('../nodes/PIShipHigh');
 var PIShipMid = require('../nodes/PIShipMid');
 var PIShipLow = require('../nodes/PIShipLow');
 var StoryShip = require('../nodes/StoryShip');
@@ -16,6 +17,7 @@ var Random = require('../util/Random');
 
 var shipMap = {
 	Mother: MotherShip,
+	PIHigh : PIShipHigh,
 	PIMid : PIShipMid,
 	PILow: PIShipLow,
 	Story: StoryShip

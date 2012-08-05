@@ -15,10 +15,10 @@ var Vector = require('../geometry/Vector');
 
 var Textures = require('../Textures');
 
-function PIShipMid() {
+function PIShipMid(sprite) {
 	PIShipMid.superclass.constructor.call(this);
 
-	this.sprite = new Sprite({
+	this.sprite = sprite || new Sprite({
 		texture: Textures.PIShipMid
 	});
 

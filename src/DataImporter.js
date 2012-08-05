@@ -62,6 +62,16 @@ function getData() {
 		}
 	},
 	{
+		at: totalTime * 0.22,
+		event: 'spawn',
+		args: {
+			type: 'PIHigh',
+			id: 'PI4',
+			from: 'PI1',
+			name: 'big PI'
+		}
+	},
+	{
 		at: totalTime * 0.25,
 		event: 'spawn',
 		args: {
@@ -149,10 +159,15 @@ function getData() {
 	{
 		at: totalTime * 1.30,
 		event: 'shoot',
+		args: 'PI4'
+	},
+	{
+		at: totalTime * 1.37,
+		event: 'shoot',
 		args: 'PI1'
 	},
 	{
-		at: totalTime * 1.40,
+		at: totalTime * 1.45,
 		event: 'levelClear'
 	}];
 }

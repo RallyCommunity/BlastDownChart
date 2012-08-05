@@ -20,7 +20,7 @@ function determineRoot(callback) {
 	});
 }
 
-var images = [ 'Bullet', 'Complete', 'Level', 'Level1', 'MotherShip', 'PIShipMid', 'PIShipLow', 'Player', 'sprites', 'stars', 'Start', 'StoryShip' ];
+var images = [ 'Bullet', 'Complete', 'Level', 'Level1', 'MotherShip', 'PIShipHigh', 'PIShipMid', 'PIShipLow', 'Player', 'sprites', 'stars', 'Start', 'StoryShip' ];
 
 var Textures = {
 	load: function(callback) {
