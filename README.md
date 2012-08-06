@@ -35,7 +35,11 @@ They need to end in `.spec.js` and you will need to `require` what you're testin
 ## Building the app for Rally ##
 
 run `rake` from the root directory. This will create a huge HTML file (about half a meg) that can be pasted into Rally. So far this does not account for images. If you look in `Textures.js` you will see the images need to be hosted somewhere.  
-  
+Right now the App will not work unless you host the App from a local web server and have cocos server running. Below commands can help.
+
+    cocos server
+    python -m SimpleHTTPServer
+
 Optionally, have the rake task compress the JS by invoking with `rake compress=true`
 
 
