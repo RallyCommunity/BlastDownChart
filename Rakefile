@@ -70,6 +70,8 @@ module Template
         <div class="cocos2d-app">
 						Loading...
 						<div id="bdcLoadHook"></div>
+            <script src="https://rally1.rallydev.com/apps/2.0p3/sdk.js" type="text/javascript"></script>
+
 						<script type="text/javascript">
 							window.container = document.getElementById('bdcLoadHook').parentNode;
 	DONE

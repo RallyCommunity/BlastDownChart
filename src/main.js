@@ -31,7 +31,7 @@ function main() {
 		director.attachInView();
 		//director.displayFPS = true;
 		var dataImporter = new DataImporter();
-		dataImporter.onDataReady(function(script) {
+        dataImporter.onDataReady(function(script) {
 			var scene = new Scene();
 			var layer = new PlayfieldLayer(script);
 
