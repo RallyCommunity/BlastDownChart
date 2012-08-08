@@ -172,10 +172,112 @@ function getData() {
 	}];
 }
 
+var IDCounter = 4;
+
+function addTrack(motherID, high, mid, low, story) {
+	var entries = [];
+
+	for(var h = 0; h < high; ++h) {
+		var hID = IDCounter++;
+		entries.push({
+			event: 'spawn',
+			args: {
+				type: 'PIHigh',
+				id: 'PI' + hID,
+				name: 'PI' + hID,
+				from: motherID
+			}
+		});
+
+		for(var m = 0; m < mid; ++m) {
+			var mID = IDCounter++;
+			entries.push({
+				event: 'spawn',
+				args: {
+					type: 'PIMid',
+					id: 'PI' + mID,
+					name: 'PI' + mID,
+					from: 'PI' + hID
+				}
+			});
+
+			for(var l = 0; l < low; ++l) {
+				var lID = IDCounter++;
+				entries.push({
+					event: 'spawn',
+					args: {
+						type: 'PILow',
+						id: 'PI' + lID,
+						name: 'PI' + lID,
+						from: 'PI' + mID
+					}
+				});
+
+				for(var s = 0; s < story; ++s) {
+					var sID = IDCounter++;
+					entries.push({
+						event: 'spawn',
+						args: {
+							type: 'Story',
+							id: 'S' + sID,
+							name: 'S' + sID,
+							from: 'PI' + lID
+						}
+					});
+				}
+			}
+		}
+	}
+
+	return entries;
+}
+
+function getData2() {
+	var motherID = 'PI1';
+
+	var totalTime = 60;
+
+	var script = [{
+		at: totalTime * 0.02,
+		event: 'spawn',
+		args: {
+			type: 'Mother',
+			id: motherID,
+			name: 'Mother Strategy'
+		}
+	}];
+
+	script = script.concat(addTrack(motherID, 1, 2, 2, 3));
+	script = script.concat(addTrack(motherID, 1, 1, 3, 4));
+	script = script.concat(addTrack(motherID, 1, 2, 2, 5));
+	script = script.concat(addTrack(motherID, 1, 1, 1, 7));
+	script = script.concat(addTrack(motherID, 1, 2, 2, 2));
+	script = script.concat(addTrack(motherID, 1, 2, 2, 5));
+	script = script.concat(addTrack(motherID, 1, 2, 2, 5));
+	script = script.concat(addTrack(motherID, 1, 1, 3, 4));
+	script = script.concat(addTrack(motherID, 1, 2, 2, 5));
+
+	script.forEach(function(entry, i) {
+		entry.at = totalTime * (i / script.length);
+	});
+
+	var reversed = ([].concat(script)).reverse();
+
+	reversed.forEach(function(entry, i) {
+		script.push({
+			at: totalTime++,
+			event: 'shoot',
+			args: entry.args.id
+		});
+	});
+
+	return script;
+}
+
 function DataImporter() {}
 
 DataImporter.prototype.onDataReady = function(callback) {
-	callback(getData());
+	callback(getData2());
 };
 
 module.exports = DataImporter;

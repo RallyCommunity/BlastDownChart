@@ -55,7 +55,7 @@ PlayfieldLayer.inherit(cocos.nodes.Layer, {
 	flyPlayerIn: function() {
 		this.player.runAction(new MoveBy({
 			duration: 1,
-			position: new Point(0, 100)
+			position: new Point(0, 70)
 		}));
 	},
 
