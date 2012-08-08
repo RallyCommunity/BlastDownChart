@@ -1,3 +1,4 @@
+var _ = require('../util/underscore-min');
 var geom = require('geometry');
 var Point = geom.Point;
 
@@ -9,14 +10,14 @@ function remove(array, item) {
 	}
 }
 
-function determineSlots(width, height, nodeSize) {
+function determineSlots(rect, nodeSize) {
 	var slots = [];
 
-	for(var x = 0 x < width / nodeSize.width; ++x) {
-		for(var y = 0; y < height / nodeSize.height; ++y) {
+	for(var x = 0; x < rect.size.width / nodeSize.width; ++x) {
+		for(var y = 0; y < rect.size.height / nodeSize.height; ++y) {
 			slots.push({
 				entries: [],
-				position: new Point(x * nodeSize.width, y * nodeSize.height)
+				position: new Point(x * nodeSize.width + rect.origin.x, y * nodeSize.height - rect.origin.y)
 			});
 		}
 	}
@@ -24,8 +25,8 @@ function determineSlots(width, height, nodeSize) {
 	return slots;
 }
 
-function Region(width, height, nodeSize) {
-	this.slots = determineSlots(width, height, nodeSize);
+function Region(rect, nodeSize) {
+	this.slots = determineSlots(rect, nodeSize);
 }
 
 Region.prototype = {
@@ -53,10 +54,6 @@ Region.prototype = {
 		}
 
 		return mostEmptySlot;
-	},
-
-	containsNode: function(node) {
-		return !!this._findSlotForNode(node);
 	},
 
 	addNode: function(node) {
