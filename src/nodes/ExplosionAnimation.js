@@ -35,9 +35,10 @@ function ExplosionAnimation() {
 
 ExplosionAnimation.inherit(Node, {
 
-	go: function(parent, position, zOrder) {
+	go: function(parent, position, zOrder, scale) {
 		this.position = position;
 		this.zOrder = zOrder || 0;
+		this.scale = scale || 1;
 		parent.addChild(this);
 
 		var animation = new Animation( { frames: this.animFrames, delay: 0.06 } );

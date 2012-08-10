@@ -2,10 +2,12 @@ var cocos = require('cocos2d');
 var Sprite = cocos.nodes.Sprite;
 var MoveBy = cocos.actions.MoveBy;
 var Sequence = cocos.actions.Sequence;
+var Spawn = cocos.actions.Spawn;
 var RepeatForever = cocos.actions.RepeatForever;
 var MoveTo = cocos.actions.MoveTo;
 var DelayTime = cocos.actions.DelayTime;
 var CallFunc = cocos.actions.CallFunc;
+var FadeOut = cocos.actions.FadeOut;
 
 var geom = require('geometry');
 var Point = geom.Point;
@@ -14,16 +16,18 @@ var BaseShip = require('./BaseShip');
 var Textures = require('../Textures');
 var ExplosionAnimation = require('./ExplosionAnimation');
 
+var Random = require('../util/Random');
+
 function MotherShip() {
 	MotherShip.superclass.constructor.call(this);
 
-	var sprite = new Sprite({
+	this.sprite = new Sprite({
 		texture: Textures.MotherShip
 	});
 
-	sprite.anchorPoint = new Point(0, 0);
-	this.addChild(sprite);
-	this.contentSize = sprite.contentSize;
+	this.sprite.anchorPoint = new Point(0, 0);
+	this.addChild(this.sprite);
+	this.contentSize = this.sprite.contentSize;
 }
 
 MotherShip.inherit(BaseShip, {
@@ -42,6 +46,8 @@ MotherShip.inherit(BaseShip, {
 	},
 
 	explode: function() {
+		this.stopAllActions();
+
 		var actions = [];
 
 		var explosionXs = [-60, - 30, 0, 30, 60];
@@ -52,14 +58,13 @@ MotherShip.inherit(BaseShip, {
 		function addExplosions() {
 			for (var i = 0; i < explosionXs.length; ++i) {
 				var xOffset = explosionXs[i];
-				var p = new Point(me.position.x + xOffset, me.position.y);
+				var p = new Point(me.position.x + xOffset, me.position.y + Random.rand(-30, 30));
 				//this.parent.addChild(this._createExplodeParticles(p));
-
 				(function(pos) {
 					actions.push(new CallFunc({
 						target: me,
 						method: function() {
-							new ExplosionAnimation().go(parent, pos, me.zOrder + 1);
+							new ExplosionAnimation().go(parent, pos, me.zOrder + 1, Random.rand(2, 4, true));
 						}
 					}));
 				})(p);
@@ -79,10 +84,21 @@ MotherShip.inherit(BaseShip, {
 			}
 		}));
 
-		addExplosions();
+		actions.push(new DelayTime({ duration: 0.2 }));
+
+		actions.push(new CallFunc({
+			target: me,
+			method: function() {
+				new ExplosionAnimation().go(parent, this.position, me.zOrder + 1, 6);
+			}
+		}));
 
 		this.runAction(new Sequence({
 			actions: actions
+		}));
+
+		this.sprite.runAction(new FadeOut({
+			duration: 4
 		}));
 	},
 

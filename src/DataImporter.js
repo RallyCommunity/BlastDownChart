@@ -272,6 +272,11 @@ function getData2() {
 		});
 	});
 
+	script.push({
+		at: totalTime + 4.33,
+		event: 'levelClear'
+	});
+
 	return script;
 }
 
