@@ -18,12 +18,12 @@ function PlayfieldLayer(script) {
 	var winSize = Director.sharedDirector.winSize;
 
 	var bg = new Sprite({
-		texture: Textures.stars
+		texture: Textures.bg
 	});
 	bg.anchorPoint = new Point(0, 0);
 	bg.zOrder = -5000;
 	
-	//this.addChild(bg);
+	this.addChild(bg);
 
 	this.player = new Player();
 	this.player.position = new Point(winSize.width / 2, -30);
