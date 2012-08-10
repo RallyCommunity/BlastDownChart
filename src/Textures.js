@@ -21,7 +21,7 @@ function determineRoot(callback) {
 	});
 }
 
-var images = [ 'explosionSmall', 'explosionMed', 'explosionLarge', 'titleOverlay', 'Bullet', 'Complete', 'Level', 'Level1', 'MotherShip', 'PIShipHigh', 'PIShipMid', 'PIShipLow', 'Player', 'sprites', 'Start', 'StoryShip', 'bg' ];
+var images = [ 'explosionSmall', 'explosionMed', 'explosionLarge', 'explosionSuper', 'titleOverlay', 'Bullet', 'Complete', 'Level', 'Level1', 'MotherShip', 'PIShipHigh', 'PIShipMid', 'PIShipLow', 'Player', 'sprites', 'Start', 'StoryShip', 'bg' ];
 
 var Textures = {
 	load: function(callback) {

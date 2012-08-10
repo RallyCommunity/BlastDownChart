@@ -14,7 +14,7 @@ var Point = geom.Point;
 
 var BaseShip = require('./BaseShip');
 var Textures = require('../Textures');
-var ExplosionAnimation = require('./ExplosionAnimation');
+var MotherExplosionAnimation = require('./MotherExplosionAnimation');
 
 var Random = require('../util/Random');
 
@@ -59,12 +59,11 @@ MotherShip.inherit(BaseShip, {
 			for (var i = 0; i < explosionXs.length; ++i) {
 				var xOffset = explosionXs[i];
 				var p = new Point(me.position.x + xOffset, me.position.y + Random.rand(-30, 30));
-				//this.parent.addChild(this._createExplodeParticles(p));
 				(function(pos) {
 					actions.push(new CallFunc({
 						target: me,
 						method: function() {
-							new ExplosionAnimation().go(parent, pos, me.zOrder + 1, Random.rand(2, 4, true));
+							new MotherExplosionAnimation().go(parent, pos, me.zOrder + 1, Random.rand(1, 1.5, true));
 						}
 					}));
 				})(p);
@@ -89,7 +88,7 @@ MotherShip.inherit(BaseShip, {
 		actions.push(new CallFunc({
 			target: me,
 			method: function() {
-				new ExplosionAnimation().go(parent, this.position, me.zOrder + 1, 6);
+				new MotherExplosionAnimation().go(parent, this.position, me.zOrder + 1, 1.5);
 			}
 		}));
 

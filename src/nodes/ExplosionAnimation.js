@@ -13,10 +13,10 @@ var Point = geom.Point;
 
 var Textures = require('../Textures');
 
-function ExplosionAnimation() {
+function ExplosionAnimation(textures) {
 	ExplosionAnimation.superclass.constructor.call(this);
 
-	var textures = [Textures.explosionSmall, Textures.explosionMed, Textures.explosionLarge, Textures.explosionMed, Textures.explosionSmall];
+	textures = textures || [Textures.explosionSmall, Textures.explosionMed, Textures.explosionLarge, Textures.explosionMed, Textures.explosionSmall];
 
 
 	this.animFrames = [];

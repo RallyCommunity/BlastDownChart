@@ -257,6 +257,7 @@ function getData2() {
 	script = script.concat(addTrack(motherID, 1, 1, 3, 4));
 	script = script.concat(addTrack(motherID, 1, 2, 2, 5));
 	script = script.concat(addTrack(motherID, 1, 2, 2, 5));
+	//script = script.concat(addTrack(motherID, 1, 1, 1, 1));
 
 	script.forEach(function(entry, i) {
 		entry.at = totalTime * (i / script.length);
