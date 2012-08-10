@@ -2,6 +2,8 @@ var _ = require('../util/underscore-min');
 var geom = require('geometry');
 var Point = geom.Point;
 
+var Random = require('../util/Random');
+
 function remove(array, item) {
 	var index = array.indexOf(item);
 
@@ -59,8 +61,10 @@ Region.prototype = {
 	addNode: function(node) {
 		var slot = this._getNextSlot();
 
+		var c = this.slots.length;
+
 		slot.entries.push(node);
-		return slot.position;
+		return new Point(slot.position.x + Random.rand(-15/c, 15/c), slot.position.y + Random.rand(-15/c, 15/c));
 	},
 
 	removeNode: function(node) {
