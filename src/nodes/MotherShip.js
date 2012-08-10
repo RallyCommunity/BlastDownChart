@@ -12,6 +12,7 @@ var Point = geom.Point;
 
 var BaseShip = require('./BaseShip');
 var Textures = require('../Textures');
+var ExplosionAnimation = require('./ExplosionAnimation');
 
 function MotherShip() {
 	MotherShip.superclass.constructor.call(this);
@@ -41,15 +42,48 @@ MotherShip.inherit(BaseShip, {
 	},
 
 	explode: function() {
+		var actions = [];
 
-		var explosionXs = [ -60, -30, 0, 30, 60 ];
+		var explosionXs = [-60, - 30, 0, 30, 60];
 
-		for(var i = 0; i < explosionXs.length; ++i) {
-			var xOffset = explosionXs[i];
-			var p = new Point(this.position.x + xOffset, this.position.y);
-			this.parent.addChild(this._createExplodeParticles(p));
+		var me = this;
+		var parent = this.parent;
+
+		function addExplosions() {
+			for (var i = 0; i < explosionXs.length; ++i) {
+				var xOffset = explosionXs[i];
+				var p = new Point(me.position.x + xOffset, me.position.y);
+				//this.parent.addChild(this._createExplodeParticles(p));
+
+				(function(pos) {
+					actions.push(new CallFunc({
+						target: me,
+						method: function() {
+							new ExplosionAnimation().go(parent, pos, me.zOrder + 1);
+						}
+					}));
+				})(p);
+
+				actions.push(new DelayTime({
+					duration: 0.4
+				}));
+			}
 		}
-		this.parent.removeChild(this);
+
+		addExplosions();
+
+		actions.push(new CallFunc({
+			target: this,
+			method: function() {
+				this.parent.removeChild(this);
+			}
+		}));
+
+		addExplosions();
+
+		this.runAction(new Sequence({
+			actions: actions
+		}));
 	},
 
 	spawnFrom: function(parentShip, start, end, callback) {
@@ -59,8 +93,7 @@ MotherShip.inherit(BaseShip, {
 		new MoveTo({
 			duration: 3,
 			position: end
-		}), 
-		new CallFunc({
+		}), new CallFunc({
 			target: this,
 			method: function() {
 				callback(this);
@@ -74,5 +107,4 @@ MotherShip.inherit(BaseShip, {
 });
 
 module.exports = MotherShip;
-
 
