@@ -25,41 +25,9 @@ function Player() {
 	sprite.anchorPoint = new Point(0, 0);
 	this.addChild({ child: sprite });
 	this.contentSize = sprite.contentSize;
-	
-	this.addChild(this._createExhaust());
 }
 
 Player.inherit(Node, {
-	_createExhaust: function() {
-		return new ParticleSystem({
-			totalParticles: 50,
-			duration: Infinity,
-			gravity: new Vector(),
-			centerOfGravity: new Vector(),
-			angle: -90,
-			angleVar: 20,
-			speed: 24,
-			speedVar: 10,
-			radialAccel: 0,
-			radialAccelVar: 0,
-			tangentialAccel: 0,
-			tangentialAccelVar: 0,
-			position: new Vector(this.contentSize.width / 2, 8),
-			posVar: new Vector(),
-			life: 0.5,
-			lifeVar: 0.1,
-			emissionRate: 50 / 1,
-			active: true,
-			startColor: [250, 100, 50, 222],
-			startColorVar: [5, 20, 10, 20],
-			endColor: [0, 0, 0, 0],
-			endColorVar: [0, 0, 0, 0],
-			radius: 2,
-			startScale: 1,
-			endScale: 0.1
-		});
-	},
-	
 	shootAt: function(ship) {
 		this.runAction(new Sequence({
 			actions: [
