@@ -67,7 +67,7 @@ Player.inherit(Node, {
 					duration: 1,
 					position: new geom.Point(ship.position.x, this.position.y)
 				}),
-				new DelayTime(0.2),
+				new DelayTime({ duration: 0.2 }),
 				new Shoot(ship)
 			]
 		}));

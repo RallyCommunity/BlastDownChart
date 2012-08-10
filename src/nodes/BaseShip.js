@@ -67,7 +67,7 @@ BaseShip.inherit(cocos.nodes.Node, {
 			duration: 1,
 			position: end
 		}), 
-		new DelayTime(1), 
+		new DelayTime( { duration: 1 } ), 
 		new CallFunc({
 			target: this,
 			method: function() {

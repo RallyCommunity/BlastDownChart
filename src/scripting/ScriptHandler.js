@@ -120,7 +120,7 @@ ScriptHandler.inherit(Object, {
 
 		var levelStart = new LevelStart(this._layer.contentSize);
 		this._layer.addChild(levelStart);
-		levelStart.go(function() {
+		levelStart.go(1, function() {
 			me._layer.flyPlayerIn();
 			me._layer.startScript();
 		});

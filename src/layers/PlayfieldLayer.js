@@ -1,4 +1,5 @@
 var cocos = require('cocos2d');
+var Layer = cocos.nodes.Layer;
 var Sprite = cocos.nodes.Sprite;
 var MoveBy = cocos.actions.MoveBy;
 var Director = cocos.Director;
@@ -34,7 +35,7 @@ function PlayfieldLayer(script) {
 	this.scheduleUpdate();
 }
 
-PlayfieldLayer.inherit(cocos.nodes.Layer, {
+PlayfieldLayer.inherit(Layer, {
 	findShipById: function(id) {
 		// TODO: this really should be using tags
 		return id && this.children.filter(function(child) {
