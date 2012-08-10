@@ -1,4 +1,5 @@
 var cocos = require('cocos2d');
+var Layer = cocos.nodes.Layer;
 var Sprite = cocos.nodes.Sprite;
 var MoveBy = cocos.actions.MoveBy;
 var Director = cocos.Director;
@@ -18,12 +19,12 @@ function PlayfieldLayer(script) {
 	var winSize = Director.sharedDirector.winSize;
 
 	var bg = new Sprite({
-		texture: Textures.stars
+		texture: Textures.bg
 	});
 	bg.anchorPoint = new Point(0, 0);
 	bg.zOrder = -5000;
 	
-	//this.addChild(bg);
+	this.addChild(bg);
 
 	this.player = new Player();
 	this.player.position = new Point(winSize.width / 2, -30);
@@ -34,7 +35,7 @@ function PlayfieldLayer(script) {
 	this.scheduleUpdate();
 }
 
-PlayfieldLayer.inherit(cocos.nodes.Layer, {
+PlayfieldLayer.inherit(Layer, {
 	findShipById: function(id) {
 		// TODO: this really should be using tags
 		return id && this.children.filter(function(child) {
@@ -55,7 +56,7 @@ PlayfieldLayer.inherit(cocos.nodes.Layer, {
 	flyPlayerIn: function() {
 		this.player.runAction(new MoveBy({
 			duration: 1,
-			position: new Point(0, 100)
+			position: new Point(0, 70)
 		}));
 	},
 

@@ -9,43 +9,13 @@ var ScaleTo = cocos.actions.ScaleTo;
 // only used inside ParticleSystem, use Point instead
 var Vector = require('../geometry/Vector');
 var ParticleSystem = require('../particles/ParticleSystem');
+var ExplosionAnimation = require('./ExplosionAnimation');
 
 function BaseShip() {
 	BaseShip.superclass.constructor.call(this);
 }
 
 BaseShip.inherit(cocos.nodes.Node, {
-	_createExplode: function(position) {
-		return new ParticleSystem({
-			totalParticles: 25,
-			duration: 0.35,
-			removeWhenDone: true,
-			gravity: new Vector(),
-			centerOfGravity: new Vector(),
-			angle: 0,
-			angleVar: 360,
-			radialAccel: 0,
-			radialAccelVar: 0,
-			position: position || new Vector(this.position.x, this.position.y),
-			posVar: new Vector(4, 4),
-			life: .5,
-			lifeVar: 0,
-			speed: 140,
-			speedVar: 0,
-			emissionRate: 25,
-			active: true,
-			radius: 8,
-			startColor: [155, 155, 255, 200],
-			startColorVar: [10, 10, 0, 10],
-			endColor: [0, 0, 0, 0],
-			endColorVar: [0, 0, 0, 0],
-			startScale: 1,
-			endScale: 0.1,
-			startStrokeWidth: 6,
-			endStrokeWidth: 0.1
-		});
-	},
-
 	bob: function() {},
 	weaken: function() {},
 	strengthen: function() {},
@@ -57,17 +27,10 @@ BaseShip.inherit(cocos.nodes.Node, {
 		this.position = start;
 
 		var actions = [
-		new CallFunc({
-			target: this,
-			method: function() {
-				parentShip && parentShip.hatchGlow(1.2);
-			}
-		}),
 		new MoveTo({
 			duration: 1,
 			position: end
 		}), 
-		new DelayTime(1), 
 		new CallFunc({
 			target: this,
 			method: function() {
@@ -87,7 +50,8 @@ BaseShip.inherit(cocos.nodes.Node, {
 	},
 
 	explode: function() {
-		this.parent.addChild(this._createExplode());
+		new ExplosionAnimation().go(this.parent, this.position);
+
 		this.parent.removeChild(this);
 	}
 });

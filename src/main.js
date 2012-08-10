@@ -23,6 +23,11 @@ var PlayfieldLayer = require('./layers/PlayfieldLayer');
 var Vector = require('./geometry/Vector');
 var Textures = require('./Textures');
 
+var Transition = cocos.nodes.TransitionMoveInB;
+//var Transition = cocos.nodes.TransitionSlideInR;
+var TitleScene = require('./scenes/TitleScene');
+var GameScene = require('./scenes/GameScene');
+
 function main() {
 	Textures.load(function() {
 
@@ -31,12 +36,12 @@ function main() {
 		director.attachInView();
 		//director.displayFPS = true;
 		var dataImporter = new DataImporter();
-        dataImporter.onDataReady(function(script) {
-			var scene = new Scene();
-			var layer = new PlayfieldLayer(script);
+		dataImporter.onDataReady(function(script) {
 
-			scene.addChild(layer);
-			director.runWithScene(scene);
+			var titleScene = new TitleScene(3, function() {
+				director.replaceScene(new GameScene(script));
+			});
+			director.runWithScene(titleScene);
 		});
 	});
 }

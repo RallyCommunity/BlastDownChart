@@ -13,7 +13,10 @@ var StoryShip = require('../nodes/StoryShip');
 var LevelComplete = require('../nodes/LevelComplete');
 var LevelStart = require('../nodes/LevelStart');
 
-var Random = require('../util/Random');
+var ShipPlacer = require('./ShipPlacer');
+
+var Textures = require('../Textures');
+
 
 var shipMap = {
 	Mother: MotherShip,
@@ -22,6 +25,8 @@ var shipMap = {
 	PILow: PIShipLow,
 	Story: StoryShip
 };
+
+var motherShipOffset = 100;
 
 /*
  * ScriptHandler
@@ -34,6 +39,14 @@ function ScriptHandler(layer, player, winSize) {
 	this._player = player;
 	this._winSize = winSize;
 
+	var motherShipBottomY = winSize.height - motherShipOffset - Textures.MotherShip.contentSize.height;
+	var columnArea = {
+		width: winSize.width,
+		height: motherShipBottomY
+	};
+
+	this._shipPlacer = new ShipPlacer(columnArea, motherShipBottomY);
+
 	this.levelStart();
 }
 
@@ -44,24 +57,11 @@ ScriptHandler.inherit(Object, {
 			new Point(this._winSize.width / 2, this._winSize.height + 100);
 	},
 
-	_getDestinationForShip: function(type, parentId) {
-		// TODO: temporary and very dumb algorithm here, this is really the meat of BDC,
-		// figuring out how to place ships based on their type, their parent and the
-		// current state of the world. This will expand a lot.
-
-		var parent = this._layer.findShipById(parentId);
-
-		if(!parent) { // mother ship
-			return new Point(this._winSize.width / 2, this._winSize.height - 100);
+	_getDestinationForShip: function(ship,parentShip) {
+		if(!parentShip) { // mother ship
+			return new Point(this._winSize.width / 2, this._winSize.height - motherShipOffset);
 		} else {
-			if(parent._type === 'Mother') {
-				this._piXs = this._piXs || [100, 220, 380];
-
-				return new Point(this._piXs.pop(), this._winSize.height - 230 + Random.rand(-20, 30));
-			} else {
-				parent._yc = parent._yc || 1;
-				return new Point(parent.position.x, parent.position.y - 50 - (parent._yc++ * 50)); 
-			}
+			return this._shipPlacer.positionShip(ship, parentShip);
 		}
 	},
 
@@ -76,15 +76,17 @@ ScriptHandler.inherit(Object, {
 	spawn: function(config) {
 		var Constructor = shipMap[config.type];
 		var ship = new Constructor();
+		var parentId = config.from;
 		ship._id = config.id;
+		ship._parentId = parentId;
 		ship._type = config.type;
 		ship._name = config.name;
-		ship.zOrder = this._getZOrder(config.from);
+		ship.zOrder = this._getZOrder(parentId);
 
-		var parentShip = this._layer.findShipById(config.from);
+		var parentShip = this._layer.findShipById(parentId);
 
 		var start = this._getStartForShip(config.from);
-		var destination = this._getDestinationForShip(config.type, config.from);
+		var destination = this._getDestinationForShip(ship, parentShip);
 		
 		ship.spawnFrom(parentShip, start, destination, function(ship) {
 			ship.bob();
@@ -118,7 +120,7 @@ ScriptHandler.inherit(Object, {
 
 		var levelStart = new LevelStart(this._layer.contentSize);
 		this._layer.addChild(levelStart);
-		levelStart.go(function() {
+		levelStart.go(1, function() {
 			me._layer.flyPlayerIn();
 			me._layer.startScript();
 		});

@@ -9,6 +9,7 @@ function determineRoot(callback) {
 	} else {
 		roots.push('http://localhost:4000/__jah__/assets/resources/');
 		roots.push('/bdc/assets/resources/');
+		roots.push('/src/resources/');
 	}
 
 	roots.forEach(function(root) {
@@ -20,7 +21,7 @@ function determineRoot(callback) {
 	});
 }
 
-var images = [ 'Bullet', 'Complete', 'Level', 'Level1', 'MotherShip', 'PIShipHigh', 'PIShipMid', 'PIShipLow', 'Player', 'sprites', 'stars', 'Start', 'StoryShip' ];
+var images = [ 'explosionSmall', 'explosionMed', 'explosionLarge', 'explosionSuper', 'titleOverlay', 'Bullet', 'Complete', 'Level', 'Level1', 'MotherShip', 'PIShipHigh', 'PIShipMid', 'PIShipLow', 'Player', 'sprites', 'Start', 'StoryShip', 'bg' ];
 
 var Textures = {
 	load: function(callback) {

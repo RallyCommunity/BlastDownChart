@@ -6,6 +6,7 @@ var MoveTo = cocos.actions.MoveTo;
 var FadeIn = cocos.actions.FadeIn;
 var Sequence = cocos.actions.Sequence;
 var CallFunc = cocos.actions.CallFunc;
+var DelayTime = cocos.actions.DelayTime;
 
 var geom = require('geometry');
 var Point = geom.Point;
@@ -28,7 +29,10 @@ function LevelStart(contentSize) {
 }
 
 LevelStart.inherit(Node, {
-	_go: function(sprite, duration, x, callback) {
+	_go: function(sprite, delay, duration, x, callback) {
+
+		var delayTime = new DelayTime({ duration: delay });
+
 		var fade = new FadeIn({
 			duration: duration
 		});
@@ -37,7 +41,7 @@ LevelStart.inherit(Node, {
 			position: new Point(x, sprite.position.y)
 		});
 
-		var actions = [fade, moveTo];
+		var actions = [delayTime, fade, moveTo];
 
 		if (callback) {
 			actions.push(new CallFunc({
@@ -52,11 +56,11 @@ LevelStart.inherit(Node, {
 		sprite.runAction(sequence);
 	},
 
-	go: function(callback) {
+	go: function(delay, callback) {
 		var duration = 1;
 
-		this._go(this.level, duration, -140);
-		this._go(this.start, duration, this.contentSize.width, callback);
+		this._go(this.level, delay, duration, -140);
+		this._go(this.start, delay, duration, this.contentSize.width, callback);
 	}
 });
 
