@@ -30,7 +30,7 @@ StoryShip.inherit(BaseShip, {
 		var jumpRight = new JumpBy({
 			duration: 0.5,
 			delta: new Point(5, 0),
-			height: -4,
+			height: 4,
 			jumps: 1
 		});
 		var jumpLeft = jumpRight.reverse();
