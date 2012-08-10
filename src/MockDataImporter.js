@@ -283,11 +283,11 @@ function getData2() {
 	return script;
 }
 
-function DataImporter() {}
+function MockDataImporter() {}
 
-DataImporter.prototype.onDataReady = function(callback) {
+MockDataImporter.prototype.onDataReady = function(callback) {
 	callback(getData2());
 };
 
-module.exports = DataImporter;
+module.exports = MockDataImporter;
 

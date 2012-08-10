@@ -18,7 +18,7 @@ var Point = geom.Point;
 var Scene = cocos.nodes.Scene;
 var Director = cocos.Director;
 
-var DataImporter = require('./DataImporter');
+var DataImporter = require('./MockDataImporter');
 var PlayfieldLayer = require('./layers/PlayfieldLayer');
 var Vector = require('./geometry/Vector');
 var Textures = require('./Textures');
