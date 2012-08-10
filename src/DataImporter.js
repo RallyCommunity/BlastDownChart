@@ -235,7 +235,7 @@ function addTrack(motherID, high, mid, low, story) {
 function getData2() {
 	var motherID = 'PI1';
 
-	var totalTime = 60;
+	var totalTime = 20;
 
 	var script = [{
 		at: totalTime * 0.02,
@@ -247,15 +247,16 @@ function getData2() {
 		}
 	}];
 
-	script = script.concat(addTrack(motherID, 1, 2, 2, 3));
-	script = script.concat(addTrack(motherID, 1, 1, 3, 4));
-	script = script.concat(addTrack(motherID, 1, 2, 2, 5));
-	script = script.concat(addTrack(motherID, 1, 1, 1, 7));
-	script = script.concat(addTrack(motherID, 1, 2, 2, 2));
-	script = script.concat(addTrack(motherID, 1, 2, 2, 5));
-	script = script.concat(addTrack(motherID, 1, 2, 2, 5));
-	script = script.concat(addTrack(motherID, 1, 1, 3, 4));
-	script = script.concat(addTrack(motherID, 1, 2, 2, 5));
+	script = script.concat(addTrack(motherID, 1, 1, 1, 1));
+	//script = script.concat(addTrack(motherID, 1, 2, 2, 3));
+	//script = script.concat(addTrack(motherID, 1, 1, 3, 4));
+	//script = script.concat(addTrack(motherID, 1, 2, 2, 5));
+	//script = script.concat(addTrack(motherID, 1, 1, 1, 7));
+	//script = script.concat(addTrack(motherID, 1, 2, 2, 2));
+	//script = script.concat(addTrack(motherID, 1, 2, 2, 5));
+	//script = script.concat(addTrack(motherID, 1, 2, 2, 5));
+	//script = script.concat(addTrack(motherID, 1, 1, 3, 4));
+	//script = script.concat(addTrack(motherID, 1, 2, 2, 5));
 
 	script.forEach(function(entry, i) {
 		entry.at = totalTime * (i / script.length);

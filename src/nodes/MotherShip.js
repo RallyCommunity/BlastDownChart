@@ -47,7 +47,7 @@ MotherShip.inherit(BaseShip, {
 		for(var i = 0; i < explosionXs.length; ++i) {
 			var xOffset = explosionXs[i];
 			var p = new Point(this.position.x + xOffset, this.position.y);
-			this.parent.addChild(this._createExplode(p));
+			this.parent.addChild(this._createExplodeParticles(p));
 		}
 		this.parent.removeChild(this);
 	},

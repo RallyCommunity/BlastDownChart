@@ -9,13 +9,14 @@ var ScaleTo = cocos.actions.ScaleTo;
 // only used inside ParticleSystem, use Point instead
 var Vector = require('../geometry/Vector');
 var ParticleSystem = require('../particles/ParticleSystem');
+var ExplosionAnimation = require('./ExplosionAnimation');
 
 function BaseShip() {
 	BaseShip.superclass.constructor.call(this);
 }
 
 BaseShip.inherit(cocos.nodes.Node, {
-	_createExplode: function(position) {
+	_createExplodeParticles: function(position) {
 		return new ParticleSystem({
 			totalParticles: 25,
 			duration: 0.35,
@@ -87,7 +88,9 @@ BaseShip.inherit(cocos.nodes.Node, {
 	},
 
 	explode: function() {
-		this.parent.addChild(this._createExplode());
+		//this.parent.addChild(this._createExplodeParticles());
+		new ExplosionAnimation().go(this.parent, this.position);
+
 		this.parent.removeChild(this);
 	}
 });
