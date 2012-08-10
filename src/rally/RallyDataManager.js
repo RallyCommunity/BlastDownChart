@@ -5,7 +5,7 @@ e.getData = function(callback) {
     Ext.onReady(function() {
         var find = {
             $and: [
-                { _ItemHeirarchy: 5401627848 },
+                { _ItemHierarchy: 5401627848 },
                 {$or: [
                     {_SnapshotNumber :0, ObjectID: {$ne: 5401627848} },
                     { "_PreviousValues.Blocked" : {$exists:true} },
@@ -30,4 +30,6 @@ e.getData = function(callback) {
 };
 
 module.exports = e;
+
+
 
