@@ -59,7 +59,7 @@ PIShipMid.inherit(BaseShip, {
 	},
 
 	hatchGlow: function(duration) {
-		//this.addChild(this._createHatchGlow(duration));
+		this.addChild(this._createHatchGlow(duration));
 	},
 
 	bob: function() {

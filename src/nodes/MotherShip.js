@@ -56,17 +56,10 @@ MotherShip.inherit(BaseShip, {
 		this.position = start;
 
 		var actions = [
-		new CallFunc({
-			target: this,
-			method: function() {
-				parentShip && parentShip.hatchGlow(1.2);
-			}
-		}),
 		new MoveTo({
 			duration: 3,
 			position: end
 		}), 
-		new DelayTime({duration: 1}), 
 		new CallFunc({
 			target: this,
 			method: function() {

@@ -58,17 +58,10 @@ BaseShip.inherit(cocos.nodes.Node, {
 		this.position = start;
 
 		var actions = [
-		new CallFunc({
-			target: this,
-			method: function() {
-				parentShip && parentShip.hatchGlow(1.2);
-			}
-		}),
 		new MoveTo({
 			duration: 1,
 			position: end
 		}), 
-		new DelayTime( { duration: 1 } ), 
 		new CallFunc({
 			target: this,
 			method: function() {
@@ -88,7 +81,6 @@ BaseShip.inherit(cocos.nodes.Node, {
 	},
 
 	explode: function() {
-		//this.parent.addChild(this._createExplodeParticles());
 		new ExplosionAnimation().go(this.parent, this.position);
 
 		this.parent.removeChild(this);
