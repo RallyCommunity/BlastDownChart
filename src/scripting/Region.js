@@ -17,7 +17,7 @@ function determineSlots(rect, nodeSize) {
 		for(var y = 0; y < Math.floor(rect.size.height / nodeSize.height); ++y) {
 			slots.push({
 				entries: [],
-				position: new Point(x * nodeSize.width + rect.origin.x, y * nodeSize.height + rect.origin.y)
+				position: new Point(x * nodeSize.width + rect.origin.x + nodeSize.width / 2, y * nodeSize.height + rect.origin.y)
 			});
 		}
 	}
@@ -46,7 +46,7 @@ Region.prototype = {
 		var leastNodes = Infinity;
 		var mostEmptySlot;
 
-		for(var i = this.slots.length -1; i >= 0; --i) {
+		for(var i = 0; i < this.slots.length; ++i) {
 			if(this.slots[i].entries.length <= leastNodes) {
 				leastNodes = this.slots[i].entries.length;
 				mostEmptySlot = this.slots[i];

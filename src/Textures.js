@@ -9,6 +9,7 @@ function determineRoot(callback) {
 	} else {
 		roots.push('http://localhost:4000/__jah__/assets/resources/');
 		roots.push('/bdc/assets/resources/');
+		roots.push('/src/resources/');
 	}
 
 	roots.forEach(function(root) {

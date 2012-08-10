@@ -29,26 +29,29 @@ ShipPlacer.prototype = {
 		var topRect = new Rect(columnRect.origin.x,
 													 columnRect.origin.y, 
 													 columnRect.size.width, 
-													 columnRect.size.height * .30);
+													 columnRect.size.height * .28);
 		var top = new Region(topRect, Textures.PIShipHigh.contentSize);
 
 		var midRect = new Rect(columnRect.origin.x, 
-													 topRect.origin.y - topRect.size.height, 
+													 topRect.origin.y - topRect.size.height + 27,
 													 columnRect.size.width, 
-													 columnRect.size.height * .20);
+													 columnRect.size.height * .24);
 		var mid = new Region(midRect, Textures.PIShipMid.contentSize);
 
 		var lowRect = new Rect(columnRect.origin.x,
 															midRect.origin.y - midRect.size.height,
 															columnRect.size.width,
-															columnRect.size.height * .20);
+															columnRect.size.height * .25);
 		var low = new Region(lowRect, Textures.PIShipLow.contentSize);
 
 		var storyRect = new Rect(columnRect.origin.x,
-														 lowRect.origin.y - lowRect.size.height,
+														 lowRect.origin.y - lowRect.size.height - 15,
 														 columnRect.size.width,
-														 columnRect.size.height * .30);
+														 columnRect.size.height * .25);
 		var story = new Region(storyRect, Textures.StoryShip.contentSize);
+
+		console.log(topRect.origin.y, midRect.origin.y, lowRect.origin.y, storyRect.origin.y);
+		console.log(Textures.PIShipHigh.contentSize.height, Textures.PIShipMid.contentSize.height, Textures.PIShipLow.contentSize.height, Textures.StoryShip.contentSize.height);
 
 		return {
 			PIHigh: top,

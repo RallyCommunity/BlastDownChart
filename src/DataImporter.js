@@ -235,7 +235,7 @@ function addTrack(motherID, high, mid, low, story) {
 function getData2() {
 	var motherID = 'PI1';
 
-	var totalTime = 20;
+	var totalTime = 10;
 
 	var script = [{
 		at: totalTime * 0.02,
@@ -247,16 +247,16 @@ function getData2() {
 		}
 	}];
 
-	script = script.concat(addTrack(motherID, 1, 1, 1, 1));
-	//script = script.concat(addTrack(motherID, 1, 2, 2, 3));
-	//script = script.concat(addTrack(motherID, 1, 1, 3, 4));
-	//script = script.concat(addTrack(motherID, 1, 2, 2, 5));
-	//script = script.concat(addTrack(motherID, 1, 1, 1, 7));
-	//script = script.concat(addTrack(motherID, 1, 2, 2, 2));
-	//script = script.concat(addTrack(motherID, 1, 2, 2, 5));
-	//script = script.concat(addTrack(motherID, 1, 2, 2, 5));
-	//script = script.concat(addTrack(motherID, 1, 1, 3, 4));
-	//script = script.concat(addTrack(motherID, 1, 2, 2, 5));
+	script = script.concat(addTrack(motherID, 1, 2, 2, 3));
+	script = script.concat(addTrack(motherID, 1, 1, 3, 4));
+	script = script.concat(addTrack(motherID, 1, 2, 2, 5));
+	script = script.concat(addTrack(motherID, 1, 1, 1, 7));
+	script = script.concat(addTrack(motherID, 1, 2, 2, 2));
+	script = script.concat(addTrack(motherID, 1, 2, 2, 5));
+	script = script.concat(addTrack(motherID, 1, 2, 2, 5));
+	script = script.concat(addTrack(motherID, 1, 1, 3, 4));
+	script = script.concat(addTrack(motherID, 1, 2, 2, 5));
+	script = script.concat(addTrack(motherID, 1, 2, 2, 5));
 
 	script.forEach(function(entry, i) {
 		entry.at = totalTime * (i / script.length);
@@ -265,8 +265,10 @@ function getData2() {
 	var reversed = ([].concat(script)).reverse();
 
 	reversed.forEach(function(entry, i) {
+		++totalTime;
+		++totalTime;
 		script.push({
-			at: totalTime++,
+			at: totalTime,
 			event: 'shoot',
 			args: entry.args.id
 		});
