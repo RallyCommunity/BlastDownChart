@@ -7,9 +7,9 @@ e.getData = function(callback) {
             $and: [
                 { _ItemHierarchy: 5401627848 },
                 {$or: [
-                    {_SnapshotNumber :0, ObjectID: {$ne: 5401627848} },
+                    {_SnapshotNumber :0 },
                     { "_PreviousValues.Blocked" : {$exists:true} },
-                    { ObjectID: 5401627848, PercentDoneByStoryCount : 1}
+                    { PercentDoneByStoryCount : 1}
                 ]}
             ]};
         find = Ext.JSON.encode(find);
@@ -17,9 +17,9 @@ e.getData = function(callback) {
             method:"get",
             url: 'https://rally1.rallydev.com/analytics/1.27/41529001/artifact/snapshot/query.js',
             params:{
-                pagesize: "10",
+                pagesize: "10000",
                 find:find,
-                fields:'["_PreviousValues","ScheduleState","_ItemHierarchy"]',
+                fields:'true',
                 sort:'{_ValidFrom:1}'
             },
 
