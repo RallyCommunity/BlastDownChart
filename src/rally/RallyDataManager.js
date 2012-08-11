@@ -4,12 +4,16 @@ var e = {};
 e.getData = function(callback) {
     Ext.onReady(function() {
         var find = {
-            $and: [
-                { _ItemHierarchy: 5401627848 },
+            $and: [//
+                { _ItemHierarchy: 5683826144 },
                 {$or: [
                     {_SnapshotNumber :0 },
                     { "_PreviousValues.Blocked" : {$exists:true} },
                     { PercentDoneByStoryCount : 1}
+                ]},
+                {$or: [
+                    { _Type : 'PortfolioItem' },
+                    { _Type : 'HierarchicalRequirement' }
                 ]}
             ]};
         find = Ext.JSON.encode(find);

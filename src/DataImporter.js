@@ -89,11 +89,6 @@ DataImporter.prototype.onDataReady = function(callback) {
             }
         ];
         Ext.Array.each(results, function(snapshot) {
-            console.log(snapshot._Type[snapshot._Type.length-1]);
-            if(snapshot._Type[snapshot._Type.length+1]=="Task"){
-                debugger;
-                return;
-            }
             formatted = formatted.concat(translate(snapshot));
         });
         formatted.push({
