@@ -50,9 +50,6 @@ ShipPlacer.prototype = {
 														 columnRect.size.height * .25);
 		var story = new Region(storyRect, Textures.StoryShip.contentSize);
 
-		console.log(topRect.origin.y, midRect.origin.y, lowRect.origin.y, storyRect.origin.y);
-		console.log(Textures.PIShipHigh.contentSize.height, Textures.PIShipMid.contentSize.height, Textures.PIShipLow.contentSize.height, Textures.StoryShip.contentSize.height);
-
 		return {
 			PIHigh: top,
 			PIMid: mid,

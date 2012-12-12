@@ -73,10 +73,7 @@ function translate(snapshot) {
     return result;
 }
 DataImporter.prototype.onDataReady = function(callback) {
-    function format(response) {
-        var results = Ext.JSON.decode(response.responseText).Results;
-        console.log(results);
-        console.log(results.pop());
+    function format(results) {
         var formatted = [
             {
                 at: totalTime * 0.02,

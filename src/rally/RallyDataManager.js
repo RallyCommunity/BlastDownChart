@@ -17,19 +17,17 @@ e.getData = function(callback) {
                 ]}
             ]};
         find = Ext.JSON.encode(find);
-        Ext.Ajax.request({
-            method:"get",
-            url: 'https://rally1.rallydev.com/analytics/v2.0/service/rally/workspace/41529001/artifact/snapshot/query.js',
-            params:{
-                pagesize: "10000",
-                find:find,
-                fields:'true',
-                sort:'{_ValidFrom:1}'
-            },
 
-            cors:true,
-            success:callback
-        });
+				Ext.create('Rally.data.lookback.SnapshotStore', {
+					rawFind: find,
+					autoLoad: true,
+					limit: 10000,
+					listeners: {
+						load: function(store, data, success) {
+							callback(data);
+						}
+					}
+				});
     });
 };
 
