@@ -1,34 +1,3 @@
-// var sdk = require('./util/sdk-debug');
-// var Ext = sdk.Ext;
-// var Rally = sdk.Rally;
-// 
-// Ext.define('BDC.DataImporter', {
-// 	constructor: function() {
-// 		Ext.create('Rally.data.WsapiDataStore', {
-// 			model: 'UserStory',
-// 			listeners: {
-// 				load: function(store, data, success) {
-// 					var script = this._convertData(data);
-// 				}
-// 			},
-// 			autoLoad: true,
-// 			fetch: ['Name', 'ScheduleState'],
-// 			filters: [{
-// 				property: '_Type',
-// 				operator: 'in',
-// 				value: ['Defect', 'HierarchicalRequirement']
-// 			}]
-// 		});
-// 	},
-// 	
-// 	_convertData: function(data) {
-// 		var scriptData = [];
-// 		
-// 		
-// 	}
-// });
-// 
-// module.exports = BDC.DataImporter;
 var totalTime = 30;
 
 function getData() {

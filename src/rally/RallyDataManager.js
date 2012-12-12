@@ -2,9 +2,9 @@ var e = {};
 
 
 e.getData = function(callback) {
-    Ext.onReady(function() {
+    Rally.onReady(function() {
         var find = {
-            $and: [//
+            $and: [
                 { _ItemHierarchy: 5683826144 },
                 {$or: [
                     {_SnapshotNumber :0 },
@@ -19,7 +19,7 @@ e.getData = function(callback) {
         find = Ext.JSON.encode(find);
         Ext.Ajax.request({
             method:"get",
-            url: 'https://rally1.rallydev.com/analytics/1.27/41529001/artifact/snapshot/query.js',
+            url: 'https://rally1.rallydev.com/analytics/v2.0/service/rally/workspace/41529001/artifact/snapshot/query.js',
             params:{
                 pagesize: "10000",
                 find:find,

@@ -10,9 +10,6 @@ var Point = geom.Point;
 
 var Shoot = require('../actions/Shoot');
 
-var Vector = require('../geometry/Vector');
-var ParticleSystem = require('../particles/ParticleSystem');
-
 var Textures = require('../Textures');
 
 function Player() {

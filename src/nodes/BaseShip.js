@@ -5,10 +5,6 @@ var CallFunc = cocos.actions.CallFunc;
 var Sequence = cocos.actions.Sequence;
 var ScaleTo = cocos.actions.ScaleTo;
 
-// TODO: Vector should either be removed altogether or
-// only used inside ParticleSystem, use Point instead
-var Vector = require('../geometry/Vector');
-var ParticleSystem = require('../particles/ParticleSystem');
 var ExplosionAnimation = require('./ExplosionAnimation');
 
 function BaseShip() {
